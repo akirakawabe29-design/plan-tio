@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Company Profile | 株式会社プランティオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1F2937', // Gray 800
+                            gray: '#F3F4F6', // Gray 100
+                            line: '#E5E7EB', // Gray 200
+                            accent: '#C5A059', // Gold
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        en: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .reveal-line { width: 0; transition: width 1.5s cubic-bezier(0.22, 1, 0.36, 1); }
+        .reveal-line.active { width: 100%; }
+        /* Map grayscale filter */
+        iframe { filter: grayscale(100%) contrast(1.2); transition: filter 0.5s; }
+        iframe:hover { filter: grayscale(0%); }
+    </style>
+</head>
+<body class="bg-white text-brand-dark antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-gray-900">Plan-tio</a>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <div class="relative group">
+                    <a href="service.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
+                        SERVICE
+                        <span class="text-[10px]">▾</span>
+                    </a>
+                    <div class="absolute left-0 top-full mt-3 w-64 rounded-xl border border-gray-100 bg-white shadow-lg p-3 invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                        <a href="originalbrand-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                        <a href="oem-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                        <a href="cycleup-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                        <a href="marketaccess-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                    </div>
+                </div>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+
+            <button
+                type="button"
+                id="menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く"
+                class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 text-gray-900"
+            >
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 bg-white/95 backdrop-blur-md">
+            <div class="px-6 py-5 flex flex-col gap-4 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <a href="service.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">SERVICE</a>
+                <a href="originalbrand-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                <a href="oem-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                <a href="cycleup-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                <a href="marketaccess-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        (function () {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            menuButton.addEventListener('click', function () {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                menuButton.setAttribute('aria-expanded', String(!isHidden));
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        })();
+    </script>
+
+    
+
+    <header class="pt-32 pb-20 md:pt-48 md:pb-24 px-6">
+        <div class="container mx-auto max-w-5xl">
+            <p class="text-gray-400 font-en tracking-[0.3em] text-xs font-bold mb-6 gs-fade">CORPORATE PROFILE</p>
+            <h1 class="text-4xl md:text-5xl lg:text-6xl font-serif font-medium leading-[1.3] mb-12 gs-fade delay-100">
+                会社概要
+            </h1>
+            <div class="w-full h-px bg-gray-200 relative">
+                <div class="absolute top-0 left-0 h-full bg-brand-dark reveal-line" id="hero-line"></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="pb-24">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="grid grid-cols-1 divide-y divide-gray-200 border-b border-gray-200">
+                
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">会社名</dt>
+                    <dd class="md:col-span-3 text-lg font-serif">株式会社プランティオ<br><span class="text-sm text-gray-400 font-sans font-normal">Plan-tio Co., Ltd.</span></dd>
+                </div>
+
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">代表者</dt>
+                    <dd class="md:col-span-3 text-lg">代表取締役　坂本 愛</dd>
+                </div>
+
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">所在地</dt>
+                    <dd class="md:col-span-3 text-lg">
+                        〒577-0000<br>
+                        大阪府東大阪市（以下住所詳細）<br>
+                        <a href="#access" class="text-xs text-brand-accent underline mt-2 inline-block">MAP →</a>
+                    </dd>
+                </div>
+
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">設立</dt>
+                    <dd class="md:col-span-3 text-lg">20XX年 X月 X日</dd>
+                </div>
+
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">資本金</dt>
+                    <dd class="md:col-span-3 text-lg">X,000,000円</dd>
+                </div>
+
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">事業内容</dt>
+                    <dd class="md:col-span-3 text-lg leading-relaxed">
+                        <ul class="space-y-2 list-disc list-inside text-gray-700">
+                            <li>オリジナル玩具・雑貨の企画・製造・販売</li>
+                            <li>OEM/ODM受託開発事業</li>
+                            <li>リユース品の買取・輸出（サイクルアップ事業）</li>
+                            <li>Eコマース事業・貿易実務代行</li>
+                        </ul>
+                    </dd>
+                </div>
+
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">許認可・資格</dt>
+                    <dd class="md:col-span-3 text-lg text-gray-700">
+                        古物商許可証 [大阪府公安委員会 第00000000号]<br>
+                        （その他 輸出入関連ライセンス等）
+                    </dd>
+                </div>
+
+                <div class="py-8 md:grid md:grid-cols-4 md:gap-8 items-start gs-row">
+                    <dt class="font-bold text-sm tracking-widest text-gray-500 mb-2 md:mb-0">主要取引銀行</dt>
+                    <dd class="md:col-span-3 text-lg text-gray-700">
+                        三菱UFJ銀行、三井住友銀行、大阪信用金庫 他
+                    </dd>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-gray">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-3xl font-serif mb-12 gs-fade">History</h2>
+            
+            <div class="relative border-l border-gray-300 ml-4 md:ml-0 md:pl-12 space-y-12">
+                <div class="relative gs-history-item">
+                    <div class="absolute -left-[21px] md:-left-[53px] top-2 w-3 h-3 bg-brand-dark rounded-full border-4 border-brand-gray"></div>
+                    <div class="md:flex gap-8">
+                        <div class="w-32 font-en font-bold text-xl text-brand-accent mb-2 md:mb-0">201X.04</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">株式会社プランティオ 設立</h3>
+                            <p class="text-gray-500 text-sm">大阪府東大阪市にて、玩具の企画販売会社として創業。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative gs-history-item">
+                    <div class="absolute -left-[21px] md:-left-[53px] top-2 w-3 h-3 bg-brand-dark rounded-full border-4 border-brand-gray"></div>
+                    <div class="md:flex gap-8">
+                        <div class="w-32 font-en font-bold text-xl text-brand-accent mb-2 md:mb-0">201X.10</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">自社ブランド事業 開始</h3>
+                            <p class="text-gray-500 text-sm">第一弾商品となる木製玩具シリーズをリリース。ECサイトでの販売を開始。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative gs-history-item">
+                    <div class="absolute -left-[21px] md:-left-[53px] top-2 w-3 h-3 bg-brand-dark rounded-full border-4 border-brand-gray"></div>
+                    <div class="md:flex gap-8">
+                        <div class="w-32 font-en font-bold text-xl text-brand-accent mb-2 md:mb-0">202X.05</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">OEM事業部 発足</h3>
+                            <p class="text-gray-500 text-sm">法人向けの商品開発受託サービスを開始。大手小売店との取引口座を開設。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="relative gs-history-item">
+                    <div class="absolute -left-[21px] md:-left-[53px] top-2 w-3 h-3 bg-brand-dark rounded-full border-4 border-brand-gray"></div>
+                    <div class="md:flex gap-8">
+                        <div class="w-32 font-en font-bold text-xl text-brand-accent mb-2 md:mb-0">202X.08</div>
+                        <div>
+                            <h3 class="font-bold text-lg mb-2">サイクルアップ（輸出）事業 開始</h3>
+                            <p class="text-gray-500 text-sm">フィリピンへのコンテナ輸出を開始。グローバルなリユースネットワークを構築。</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="access" class="py-24">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <h2 class="text-3xl font-serif mb-8 gs-fade">Access</h2>
+            <div class="w-full h-[400px] bg-gray-200 rounded-xl overflow-hidden shadow-lg gs-fade">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d105000!2d135.5!3d34.6!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e6553406e2e1%3A0xc55bc16a41f2052f!2z5aSn6Ziq5bqc5p2x5aSn6Ziq5biC!5e0!3m2!1sja!2sjp!4v1600000000000!5m2!1sja!2sjp" 
+                        width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class="mt-6 flex flex-col md:flex-row justify-between items-start">
+                <div>
+                    <p class="font-bold text-lg">本社所在地</p>
+                    <p class="text-gray-600 mt-2">
+                        〒577-0000 大阪府東大阪市XXX-X-X<br>
+                        近鉄奈良線「東花園駅」より徒歩10分
+                    </p>
+                </div>
+                <a href="https://goo.gl/maps/placeholder" target="_blank" class="mt-4 md:mt-0 inline-flex items-center text-sm font-bold border border-gray-300 px-4 py-2 rounded hover:bg-black hover:text-white transition-colors">
+                    Google Mapで見る ↗
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-white">Plan-tio</a>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end gap-6 text-xs font-bold tracking-widest">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-end gap-8 md:gap-12 text-left md:text-right">
+                    <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="service.html" class="hover:text-white transition-colors">SERVICE</a>
+                        <div class="flex flex-col gap-2 text-[11px] tracking-[0.2em] text-gray-400 md:items-end">
+                            <a href="originalbrand-detail.html" class="hover:text-white transition-colors">ORIGINAL BRAND</a>
+                            <a href="oem-detail.html" class="hover:text-white transition-colors">OEM / ODM</a>
+                            <a href="cycleup-detail.html" class="hover:text-white transition-colors">CYCLE UP</a>
+                            <a href="marketaccess-detail.html" class="hover:text-white transition-colors">MARKET ACCESS</a>
+                        </div>
+                    </div>
+
+                    <a href="company.html" class="hover:text-white transition-colors">COMPANY</a>
+                </div>
+
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border border-white text-xs font-bold tracking-widest hover:bg-white hover:text-gray-900 transition-colors">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="px-6 pb-8 text-center text-[11px] text-gray-500">
+            <p>&copy; 2026 Plan-tio Co.,Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Hero Line Animation
+        window.addEventListener('load', () => {
+            document.getElementById('hero-line').classList.add('active');
+        });
+
+        // Fade Elements
+        gsap.utils.toArray('.gs-fade').forEach(elem => {
+            gsap.fromTo(elem, 
+                { opacity: 0, y: 20 },
+                { opacity: 1, y: 0, duration: 1, ease: "power2.out", scrollTrigger: { trigger: elem, start: "top 90%" } }
+            );
+        });
+
+        // Row Stagger
+        gsap.from(".gs-row", {
+            opacity: 0, x: -20, duration: 0.8, stagger: 0.1, ease: "power2.out",
+            scrollTrigger: { trigger: ".gs-row", start: "top 85%" }
+        });
+
+        // History Stagger
+        gsap.from(".gs-history-item", {
+            opacity: 0, x: 20, duration: 0.8, stagger: 0.2, ease: "power2.out",
+            scrollTrigger: { trigger: ".gs-history-item", start: "top 80%" }
+        });
+    </script>
+</body>
+</html>

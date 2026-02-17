@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service | 株式会社プランティオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            warm: '#E67E22', // Brand Business
+                            cool: '#2C7873', // Cycle Up Business
+                            dark: '#1A202C',
+                            light: '#F8F9FA',
+                            accent: '#FFD700',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        en: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .service-card:hover .service-icon { transform: scale(1.1) rotate(5deg); }
+        .bg-grid { background-image: radial-gradient(#cbd5e0 1px, transparent 1px); background-size: 20px 20px; }
+    </style>
+</head>
+<body class="bg-white text-brand-dark antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-gray-900">Plan-tio</a>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <div class="relative group">
+                    <a href="service.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
+                        SERVICE
+                        <span class="text-[10px]">▾</span>
+                    </a>
+                    <div class="absolute left-0 top-full mt-3 w-64 rounded-xl border border-gray-100 bg-white shadow-lg p-3 invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                        <a href="originalbrand-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                        <a href="oem-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                        <a href="cycleup-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                        <a href="marketaccess-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                    </div>
+                </div>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+
+            <button
+                type="button"
+                id="menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く"
+                class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 text-gray-900"
+            >
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 bg-white/95 backdrop-blur-md">
+            <div class="px-6 py-5 flex flex-col gap-4 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <a href="service.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">SERVICE</a>
+                <a href="originalbrand-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                <a href="oem-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                <a href="cycleup-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                <a href="marketaccess-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        (function () {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            menuButton.addEventListener('click', function () {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                menuButton.setAttribute('aria-expanded', String(!isHidden));
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        })();
+    </script>
+
+    
+
+    <header class="pt-32 pb-20 bg-brand-light relative overflow-hidden">
+        <div class="absolute inset-0 bg-grid opacity-30"></div>
+        <div class="container mx-auto px-6 relative z-10 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold leading-[1.3] mb-6 gs-fade-up">
+                Business Solutions
+            </h1>
+            <p class="text-xl text-gray-600 max-w-2xl mx-auto mb-10 gs-fade-up delay-100">
+                「つくる」から「つなぐ」まで。<br>
+                プランティオは、モノの価値を最大化する<br class="md:hidden">トータル・バリューチェーンを提供します。
+            </p>
+        </div>
+    </header>
+
+    <section id="oem" class="py-24 relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12 mb-16 items-center">
+                <div class="md:w-1/2 gs-reveal-right">
+                    <span class="text-brand-warm font-en font-bold tracking-widest text-sm">01. CREATIVE & QUALITY</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">自社ブランド・OEM開発</h2>
+                    <p class="text-gray-600 leading-relaxed">
+                        「3児の母」としての感性と、厳しい品質基準（ST基準等）をクリアする製造ノウハウを融合。
+                        貴社のオリジナル玩具開発（OEM/ODM）から、自社ブランド商品の卸売まで、柔軟に対応します。
+                        <br><br>
+                        <strong>強み：</strong>
+                        <ul class="list-disc list-inside mt-4 text-gray-600 space-y-2">
+                            <li>生活者視点に基づいた「売れる」企画立案</li>
+                            <li>協力工場との連携によるコストパフォーマンス</li>
+                            <li>徹底した安全性試験と品質管理（QC）</li>
+                        </ul>
+                    </p>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-4 gs-reveal-left">
+                    <div class="bg-brand-light p-6 rounded-xl service-card group cursor-pointer transition-colors hover:bg-brand-warm/10">
+                        <div class="text-4xl mb-4 service-icon transition-transform">🎨</div>
+                        <h3 class="font-bold mb-2">商品企画・デザイン</h3>
+                        <p class="text-xs text-gray-500">ターゲット選定からパッケージデザインまで一貫対応。</p>
+                    </div>
+                    <div class="bg-brand-light p-6 rounded-xl service-card group cursor-pointer transition-colors hover:bg-brand-warm/10">
+                        <div class="text-4xl mb-4 service-icon transition-transform">🏭</div>
+                        <h3 class="font-bold mb-2">OEM/ODM 製造</h3>
+                        <p class="text-xs text-gray-500">小ロットから量産まで、ニーズに合わせた生産体制。</p>
+                    </div>
+                    <div class="bg-brand-light p-6 rounded-xl service-card group cursor-pointer transition-colors hover:bg-brand-warm/10">
+                        <div class="text-4xl mb-4 service-icon transition-transform">🛡️</div>
+                        <h3 class="font-bold mb-2">品質管理・検品</h3>
+                        <p class="text-xs text-gray-500">ST基準に準拠した厳しいチェック体制。</p>
+                    </div>
+                    <div class="bg-brand-light p-6 rounded-xl service-card group cursor-pointer transition-colors hover:bg-brand-warm/10">
+                        <div class="text-4xl mb-4 service-icon transition-transform">📦</div>
+                        <h3 class="font-bold mb-2">卸売・販売支援</h3>
+                        <p class="text-xs text-gray-500">自社ECおよび全国の小売店への流通ネットワーク。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="h-px w-full bg-gradient-to-r from-transparent via-gray-300 to-transparent"></div>
+
+    <section id="cycle" class="py-24 bg-brand-dark text-white relative overflow-hidden">
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+            <svg class="w-full h-full" xmlns="http://www.w3.org/2000/svg">
+                <defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1" fill="white"/></pattern></defs>
+                <rect width="100%" height="100%" fill="url(#dots)"/>
+            </svg>
+        </div>
+
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="flex flex-col md:flex-row-reverse gap-12 mb-16 items-center">
+                <div class="md:w-1/2 gs-reveal-left">
+                    <span class="text-brand-cool font-en font-bold tracking-widest text-sm">02. GLOBAL RE-COMMERCE</span>
+                    <h2 class="text-3xl md:text-4xl font-bold mt-2 mb-6">サイクルアップ・輸出事業</h2>
+                    <p class="text-gray-300 leading-relaxed">
+                        日本国内で余剰となった在庫や中古品を、必要とする海外マーケットへ。
+                        単なる輸出代行ではなく、現地パートナーとの強固な信頼関係に基づき、最適な販路を開拓します。
+                        <br><br>
+                        <strong>取扱品目例：</strong><br>
+                        玩具、ベビー用品、日用雑貨、家具、厨房機器 etc.
+                    </p>
+                    <div class="mt-8 grid grid-cols-3 gap-4 text-center">
+                        <div class="p-4 border border-brand-cool/30 rounded bg-brand-cool/10">
+                            <div class="text-2xl font-en font-bold text-brand-cool">15+</div>
+                            <div class="text-[10px] text-gray-400 mt-1">Countries</div>
+                        </div>
+                        <div class="p-4 border border-brand-cool/30 rounded bg-brand-cool/10">
+                            <div class="text-2xl font-en font-bold text-brand-cool">200+</div>
+                            <div class="text-[10px] text-gray-400 mt-1">Containers/yr</div>
+                        </div>
+                        <div class="p-4 border border-brand-cool/30 rounded bg-brand-cool/10">
+                            <div class="text-2xl font-en font-bold text-brand-cool">100%</div>
+                            <div class="text-[10px] text-gray-400 mt-1">Compliance</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 gs-reveal-right">
+                    <div class="bg-gray-800 rounded-xl p-8 border border-gray-700 shadow-2xl relative overflow-hidden">
+                        <h3 class="font-bold text-lg mb-4 flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full bg-brand-cool animate-pulse"></span>
+                            Export Network
+                        </h3>
+                        <ul class="space-y-4 text-sm text-gray-300">
+                            <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                                <span>🇯🇵 JAPAN (Origin)</span>
+                                <span class="text-brand-cool">Processing Center</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                                <span>🇵🇭 PHILIPPINES</span>
+                                <span>Retail / Wholesale</span>
+                            </li>
+                            <li class="flex justify-between items-center border-b border-gray-700 pb-2">
+                                <span>🇹🇭 THAILAND</span>
+                                <span>Market Distribution</span>
+                            </li>
+                            <li class="flex justify-between items-center pb-2">
+                                <span>🇰🇭 CAMBODIA</span>
+                                <span>Education Support</span>
+                            </li>
+                        </ul>
+                        <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-brand-cool/20 rounded-full blur-2xl"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="flow" class="py-24 bg-brand-light">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16">
+                <span class="text-gray-500 font-en tracking-widest text-sm">WORK FLOW</span>
+                <h2 class="text-3xl font-bold mt-2">お取引の流れ</h2>
+                <p class="text-sm text-gray-500 mt-4">ご相談から納品・輸出まで、専任担当者がサポートします。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 relative">
+                <div class="hidden md:block absolute top-8 left-0 w-full h-1 bg-gray-200 -z-0"></div>
+
+                <div class="relative z-10 gs-fade-up">
+                    <div class="w-16 h-16 bg-brand-dark text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 border-4 border-brand-light">01</div>
+                    <h3 class="font-bold text-center mb-2">お問い合わせ</h3>
+                    <p class="text-xs text-gray-500 text-center leading-relaxed">
+                        フォームよりご要望をお聞かせください。<br>OEM/買取どちらも対応可能です。
+                    </p>
+                </div>
+                
+                <div class="relative z-10 gs-fade-up delay-100">
+                    <div class="w-16 h-16 bg-brand-dark text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 border-4 border-brand-light">02</div>
+                    <h3 class="font-bold text-center mb-2">ヒアリング・企画</h3>
+                    <p class="text-xs text-gray-500 text-center leading-relaxed">
+                        予算・納期・スペックを調整。<br>最適なプランをご提案します。
+                    </p>
+                </div>
+
+                <div class="relative z-10 gs-fade-up delay-200">
+                    <div class="w-16 h-16 bg-brand-dark text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 border-4 border-brand-light">03</div>
+                    <h3 class="font-bold text-center mb-2">製造 / 集荷・選別</h3>
+                    <p class="text-xs text-gray-500 text-center leading-relaxed">
+                        徹底した品質管理のもと製造、<br>または輸出向けの選別作業を実施。
+                    </p>
+                </div>
+
+                <div class="relative z-10 gs-fade-up delay-300">
+                    <div class="w-16 h-16 bg-brand-warm text-white rounded-full flex items-center justify-center text-xl font-bold mx-auto mb-6 border-4 border-brand-light">04</div>
+                    <h3 class="font-bold text-center mb-2">納品 / 輸出</h3>
+                    <p class="text-xs text-gray-500 text-center leading-relaxed">
+                        ご指定の場所へ納品。<br>輸出の場合は通関手続きも代行します。
+                    </p>
+                </div>
+            </div>
+
+            <div class="text-center mt-16">
+                <a href="/contact" class="inline-block bg-brand-dark text-white px-10 py-4 rounded-full font-bold tracking-widest hover:bg-brand-warm transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                    START PROJECT
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-white">Plan-tio</a>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end gap-6 text-xs font-bold tracking-widest">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-end gap-8 md:gap-12 text-left md:text-right">
+                    <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="service.html" class="hover:text-white transition-colors">SERVICE</a>
+                        <div class="flex flex-col gap-2 text-[11px] tracking-[0.2em] text-gray-400 md:items-end">
+                            <a href="originalbrand-detail.html" class="hover:text-white transition-colors">ORIGINAL BRAND</a>
+                            <a href="oem-detail.html" class="hover:text-white transition-colors">OEM / ODM</a>
+                            <a href="cycleup-detail.html" class="hover:text-white transition-colors">CYCLE UP</a>
+                            <a href="marketaccess-detail.html" class="hover:text-white transition-colors">MARKET ACCESS</a>
+                        </div>
+                    </div>
+
+                    <a href="company.html" class="hover:text-white transition-colors">COMPANY</a>
+                </div>
+
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border border-white text-xs font-bold tracking-widest hover:bg-white hover:text-gray-900 transition-colors">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="px-6 pb-8 text-center text-[11px] text-gray-500">
+            <p>&copy; 2026 Plan-tio Co.,Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // General Fade Up
+        gsap.utils.toArray('.gs-fade-up').forEach((elem) => {
+            gsap.fromTo(elem, 
+                { opacity: 0, y: 30 },
+                {
+                    opacity: 1, y: 0, duration: 1, ease: "power2.out",
+                    scrollTrigger: { trigger: elem, start: "top 90%" }
+                }
+            );
+        });
+
+        // Horizontal Reveals
+        gsap.from(".gs-reveal-left", {
+            opacity: 0, x: -50, duration: 1, ease: "power2.out",
+            scrollTrigger: { trigger: ".gs-reveal-left", start: "top 80%" }
+        });
+        gsap.from(".gs-reveal-right", {
+            opacity: 0, x: 50, duration: 1, ease: "power2.out",
+            scrollTrigger: { trigger: ".gs-reveal-right", start: "top 80%" }
+        });
+    </script>
+</body>
+</html>

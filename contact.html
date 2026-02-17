@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact | 株式会社プランティオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#1F2937', // Gray 800
+                            gold: '#C5A059', // Gold Accent
+                            input: '#F9FAFB', // Light Gray
+                            focus: '#E67E22', // Focus Ring Color
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        en: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Input Focus Animation */
+        .input-group input:focus ~ label,
+        .input-group input:not(:placeholder-shown) ~ label,
+        .input-group textarea:focus ~ label,
+        .input-group textarea:not(:placeholder-shown) ~ label {
+            top: -10px;
+            left: 10px;
+            font-size: 0.75rem;
+            background-color: white;
+            padding: 0 5px;
+            color: #E67E22;
+        }
+        
+        .input-group label {
+            transition: all 0.3s ease;
+            pointer-events: none;
+        }
+
+        /* Checkbox Custom Style */
+        .checkbox-wrapper input:checked + div {
+            background-color: #1F2937;
+            border-color: #1F2937;
+        }
+        .checkbox-wrapper input:checked + div svg {
+            display: block;
+        }
+    </style>
+</head>
+<body class="bg-white text-brand-dark antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-gray-900">Plan-tio</a>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <div class="relative group">
+                    <a href="service.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
+                        SERVICE
+                        <span class="text-[10px]">▾</span>
+                    </a>
+                    <div class="absolute left-0 top-full mt-3 w-64 rounded-xl border border-gray-100 bg-white shadow-lg p-3 invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                        <a href="originalbrand-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                        <a href="oem-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                        <a href="cycleup-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                        <a href="marketaccess-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                    </div>
+                </div>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+
+            <button
+                type="button"
+                id="menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く"
+                class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 text-gray-900"
+            >
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 bg-white/95 backdrop-blur-md">
+            <div class="px-6 py-5 flex flex-col gap-4 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <a href="service.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">SERVICE</a>
+                <a href="originalbrand-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                <a href="oem-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                <a href="cycleup-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                <a href="marketaccess-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        (function () {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            menuButton.addEventListener('click', function () {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                menuButton.setAttribute('aria-expanded', String(!isHidden));
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        })();
+    </script>
+
+    
+
+    <header class="pt-32 pb-16 md:pt-48 md:pb-20 px-6 bg-brand-input">
+        <div class="container mx-auto max-w-4xl text-center">
+            <p class="text-brand-gold font-en tracking-[0.3em] text-xs font-bold mb-6">CONTACT US</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-medium leading-[1.3] mb-6">
+                お問い合わせ
+            </h1>
+            <p class="text-gray-500 leading-relaxed max-w-2xl mx-auto text-sm md:text-base">
+                OEM開発のご相談、サイクルアップ事業へのお見積もり、その他協業のご提案など、<br class="hidden md:block">
+                お気軽にお問い合わせください。通常2営業日以内に担当者よりご連絡いたします。
+            </p>
+        </div>
+    </header>
+
+    <section class="py-20 px-6">
+        <div class="container mx-auto max-w-3xl">
+            
+            <form action="#" method="POST" class="space-y-8 gs-form">
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="md:col-span-2">
+                        <label class="block text-sm font-bold text-gray-700 mb-3">お問い合わせ種別 <span class="text-red-500">*</span></label>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="type" class="peer sr-only" checked>
+                                <div class="p-4 border border-gray-200 rounded-lg text-center hover:bg-gray-50 peer-checked:border-brand-dark peer-checked:bg-brand-dark peer-checked:text-white transition-all">
+                                    <span class="text-sm font-bold">OEM / 開発</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="type" class="peer sr-only">
+                                <div class="p-4 border border-gray-200 rounded-lg text-center hover:bg-gray-50 peer-checked:border-brand-dark peer-checked:bg-brand-dark peer-checked:text-white transition-all">
+                                    <span class="text-sm font-bold">サイクルアップ / 輸出</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="type" class="peer sr-only">
+                                <div class="p-4 border border-gray-200 rounded-lg text-center hover:bg-gray-50 peer-checked:border-brand-dark peer-checked:bg-brand-dark peer-checked:text-white transition-all">
+                                    <span class="text-sm font-bold">その他 / 協業</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 pt-4">
+                    <div class="relative input-group">
+                        <input type="text" id="company" name="company" placeholder=" " 
+                               class="w-full border border-gray-300 rounded px-4 py-4 outline-none focus:border-brand-focus transition-colors bg-transparent">
+                        <label for="company" class="absolute left-4 top-4 text-gray-400 text-sm">貴社名 (法人のお客様)</label>
+                    </div>
+                    <div class="relative input-group">
+                        <input type="text" id="name" name="name" placeholder=" " required
+                               class="w-full border border-gray-300 rounded px-4 py-4 outline-none focus:border-brand-focus transition-colors bg-transparent">
+                        <label for="name" class="absolute left-4 top-4 text-gray-400 text-sm">お名前 <span class="text-red-500">*</span></label>
+                    </div>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div class="relative input-group">
+                        <input type="email" id="email" name="email" placeholder=" " required
+                               class="w-full border border-gray-300 rounded px-4 py-4 outline-none focus:border-brand-focus transition-colors bg-transparent">
+                        <label for="email" class="absolute left-4 top-4 text-gray-400 text-sm">メールアドレス <span class="text-red-500">*</span></label>
+                    </div>
+                    <div class="relative input-group">
+                        <input type="tel" id="phone" name="phone" placeholder=" " 
+                               class="w-full border border-gray-300 rounded px-4 py-4 outline-none focus:border-brand-focus transition-colors bg-transparent">
+                        <label for="phone" class="absolute left-4 top-4 text-gray-400 text-sm">お電話番号</label>
+                    </div>
+                </div>
+
+                <div class="relative input-group pt-4">
+                    <textarea id="message" name="message" rows="6" placeholder=" " required
+                              class="w-full border border-gray-300 rounded px-4 py-4 outline-none focus:border-brand-focus transition-colors bg-transparent resize-none"></textarea>
+                    <label for="message" class="absolute left-4 top-4 text-gray-400 text-sm">お問い合わせ内容 <span class="text-red-500">*</span></label>
+                </div>
+
+                <div class="pt-4 pb-8 border-b border-gray-200">
+                    <label class="flex items-center gap-4 cursor-pointer checkbox-wrapper group">
+                        <input type="checkbox" required class="sr-only">
+                        <div class="w-6 h-6 border-2 border-gray-300 rounded flex items-center justify-center transition-colors group-hover:border-brand-dark">
+                            <svg class="w-4 h-4 text-white hidden pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                        </div>
+                        <span class="text-sm text-gray-600">
+                            <a href="#" class="text-brand-dark font-bold underline hover:text-brand-gold">プライバシーポリシー</a> に同意する
+                        </span>
+                    </label>
+                </div>
+
+                <div class="text-center">
+                    <button type="submit" class="inline-flex items-center justify-center px-16 py-5 bg-brand-dark text-white rounded-full font-bold tracking-widest hover:bg-brand-gold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 group">
+                        <span>SEND MESSAGE</span>
+                        <svg class="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
+                    </button>
+                    <p class="text-xs text-gray-400 mt-4">This site is protected by reCAPTCHA and the Google Privacy Policy and Terms of Service apply.</p>
+                </div>
+
+            </form>
+        </div>
+    </section>
+
+    <section class="bg-gray-50 py-16 border-t border-gray-100">
+        <div class="container mx-auto px-6 text-center">
+            <h3 class="font-serif text-xl mb-8">お電話でのお問い合わせ</h3>
+            <div class="inline-block bg-white px-8 py-6 rounded-xl shadow-sm border border-gray-200">
+                <p class="text-3xl font-en font-bold text-brand-dark tracking-wider">06-XXXX-XXXX</p>
+                <p class="text-xs text-gray-500 mt-2">受付時間：平日 10:00 - 18:00 (土日祝除く)</p>
+            </div>
+            <div class="mt-8 text-sm text-gray-500">
+                ※ 営業・勧誘のお電話はお断りしております。
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-white">Plan-tio</a>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end gap-6 text-xs font-bold tracking-widest">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-end gap-8 md:gap-12 text-left md:text-right">
+                    <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="service.html" class="hover:text-white transition-colors">SERVICE</a>
+                        <div class="flex flex-col gap-2 text-[11px] tracking-[0.2em] text-gray-400 md:items-end">
+                            <a href="originalbrand-detail.html" class="hover:text-white transition-colors">ORIGINAL BRAND</a>
+                            <a href="oem-detail.html" class="hover:text-white transition-colors">OEM / ODM</a>
+                            <a href="cycleup-detail.html" class="hover:text-white transition-colors">CYCLE UP</a>
+                            <a href="marketaccess-detail.html" class="hover:text-white transition-colors">MARKET ACCESS</a>
+                        </div>
+                    </div>
+
+                    <a href="company.html" class="hover:text-white transition-colors">COMPANY</a>
+                </div>
+
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border border-white text-xs font-bold tracking-widest hover:bg-white hover:text-gray-900 transition-colors">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="px-6 pb-8 text-center text-[11px] text-gray-500">
+            <p>&copy; 2026 Plan-tio Co.,Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script>
+        // Simple Fade In
+        gsap.from(".gs-form", {
+            y: 30, opacity: 0, duration: 1, ease: "power2.out", delay: 0.2
+        });
+    </script>
+</body>
+</html>

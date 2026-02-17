@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Cycle Up | 株式会社プランティオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            cool: '#2C7873', // Deep Teal (Trust & Sustainability)
+                            accent: '#E0F2F1', // Light Teal
+                            dark: '#1F2937', // Charcoal
+                            gray: '#F9FAFB',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        en: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        .parallax-bg { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
+        /* Mobile adjustment for parallax */
+        @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
+    </style>
+</head>
+<body class="bg-white text-brand-dark antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-gray-900">Plan-tio</a>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <div class="relative group">
+                    <a href="service.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
+                        SERVICE
+                        <span class="text-[10px]">▾</span>
+                    </a>
+                    <div class="absolute left-0 top-full mt-3 w-64 rounded-xl border border-gray-100 bg-white shadow-lg p-3 invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                        <a href="originalbrand-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                        <a href="oem-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                        <a href="cycleup-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                        <a href="marketaccess-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                    </div>
+                </div>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+
+            <button
+                type="button"
+                id="menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く"
+                class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 text-gray-900"
+            >
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 bg-white/95 backdrop-blur-md">
+            <div class="px-6 py-5 flex flex-col gap-4 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <a href="service.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">SERVICE</a>
+                <a href="originalbrand-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                <a href="oem-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                <a href="cycleup-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                <a href="marketaccess-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        (function () {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            menuButton.addEventListener('click', function () {
+                const isHidden = mobileMenu.classList.toggle('hidden');
+                menuButton.setAttribute('aria-expanded', String(!isHidden));
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    mobileMenu.classList.add('hidden');
+                    menuButton.setAttribute('aria-expanded', 'false');
+                });
+            });
+        })();
+    </script>
+
+    
+
+    <header class="relative pt-32 pb-20 md:pt-48 md:pb-32 px-6 overflow-hidden">
+        <div class="container mx-auto relative z-10">
+            <div class="flex flex-col md:flex-row items-end gap-8">
+                <div class="md:w-2/3 gs-header">
+                    <p class="text-brand-cool font-en tracking-[0.3em] text-sm font-bold mb-6">GLOBAL RE-COMMERCE</p>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.3] mb-6">
+                        価値のバトンを、<br>
+                        国境を越えてつなぐ。
+                    </h1>
+                </div>
+                <div class="md:w-1/3 pb-2 gs-header">
+                    <p class="text-gray-500 leading-loose text-sm md:text-base">
+                        日本で役割を終えたモノたちが、再び輝く場所へ。<br>
+                        私たちは「廃棄」という概念をなくし、<br>
+                        世界中に笑顔の循環（Cycle Up）を生み出します。
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="mt-16 w-full h-[60vh] md:h-[70vh] overflow-hidden relative gs-image rounded-xl">
+            <img src="https://images.unsplash.com/photo-1519817914152-22d216bb9170?q=80&w=2102&auto=format&fit=crop" 
+                 alt="Global Logistics Container" 
+                 class="absolute inset-0 w-full h-full object-cover object-center grayscale opacity-80"
+                 data-speed="0.5">
+            <div class="absolute inset-0 bg-brand-cool/10 mix-blend-multiply"></div>
+        </div>
+    </header>
+
+    <section class="py-24 bg-brand-gray relative">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-16 items-center mb-20">
+                <div class="md:w-1/2 gs-reveal-right">
+                    <h2 class="text-3xl font-serif mb-8 leading-snug">
+                        「MOTTAINAI」を<br>
+                        世界のスタンダードへ。
+                    </h2>
+                    <p class="text-gray-600 leading-loose mb-6">
+                        私たちのサイクルアップ事業は、単なる不用品回収や輸出ではありません。
+                        日本製品の高い品質（JAPAN QUALITY）に対する世界的な信頼を背景に、
+                        東南アジアを中心とした独自の販路を開拓。
+                    </p>
+                    <p class="text-gray-600 leading-loose">
+                        現地パートナーとの強固な提携により、適正価格での再流通を実現し、
+                        現地の経済活動や教育支援にも貢献しています。
+                    </p>
+                </div>
+                <div class="md:w-1/2 grid grid-cols-2 gap-4 gs-reveal-left">
+                    <div class="bg-white p-8 rounded-lg shadow-sm border-t-4 border-brand-cool">
+                        <p class="text-xs font-bold text-gray-400 tracking-widest mb-2">EXPORT COUNTRIES</p>
+                        <p class="text-4xl md:text-5xl font-en font-bold text-brand-cool">15<span class="text-2xl text-gray-400 ml-1">+</span></p>
+                        <p class="text-xs text-gray-500 mt-2">フィリピン、タイ、カンボジア他</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border-t-4 border-brand-cool">
+                        <p class="text-xs font-bold text-gray-400 tracking-widest mb-2">ANNUAL VOLUME</p>
+                        <p class="text-4xl md:text-5xl font-en font-bold text-brand-cool">200<span class="text-2xl text-gray-400 ml-1">+</span></p>
+                        <p class="text-xs text-gray-500 mt-2">40ftコンテナ / 年間</p>
+                    </div>
+                    <div class="bg-white p-8 rounded-lg shadow-sm border-t-4 border-brand-cool col-span-2">
+                        <p class="text-xs font-bold text-gray-400 tracking-widest mb-2">CO2 REDUCTION</p>
+                        <p class="text-4xl md:text-5xl font-en font-bold text-brand-cool">High Impact</p>
+                        <p class="text-xs text-gray-500 mt-2">廃棄焼却を回避し、資源寿命を最大化</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-dark text-white clip-diagonal relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="text-center mb-16">
+                <span class="text-brand-cool font-en tracking-widest text-sm font-bold">THE PROCESS</span>
+                <h2 class="text-3xl md:text-4xl font-serif mt-4 text-white">Value Circulation Flow</h2>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="gs-step group">
+                    <div class="h-64 overflow-hidden rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?q=80&w=2070&auto=format&fit=crop" 
+                             alt="Collection" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80">
+                        <div class="absolute top-4 left-4 w-10 h-10 bg-brand-cool rounded-full flex items-center justify-center font-bold">01</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Collection & Sorting</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        提携業者様や自治体から回収した物品を、自社倉庫にて厳密に選別。リユース可能なものだけを抽出します。
+                    </p>
+                </div>
+
+                <div class="gs-step group">
+                    <div class="h-64 overflow-hidden rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=2070&auto=format&fit=crop" 
+                             alt="Container Loading" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80">
+                        <div class="absolute top-4 left-4 w-10 h-10 bg-brand-cool rounded-full flex items-center justify-center font-bold">02</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Vanning & Export</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        熟練スタッフによる「バンニング（コンテナ詰め）」技術で、積載効率を最大化し、輸送コストとCO2を削減。
+                    </p>
+                </div>
+
+                <div class="gs-step group">
+                    <div class="h-64 overflow-hidden rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1494412574643-35d324698420?q=80&w=2070&auto=format&fit=crop" 
+                             alt="Shipping" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80">
+                        <div class="absolute top-4 left-4 w-10 h-10 bg-brand-cool rounded-full flex items-center justify-center font-bold">03</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Global Logistics</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        信頼できる船会社と連携し、フィリピン・タイなどの主要港へ。通関手続きも含め、安全に輸送します。
+                    </p>
+                </div>
+
+                <div class="gs-step group">
+                    <div class="h-64 overflow-hidden rounded-lg mb-6 relative">
+                        <img src="https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=2070&auto=format&fit=crop" 
+                             alt="New Life" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80">
+                        <div class="absolute top-4 left-4 w-10 h-10 bg-brand-cool rounded-full flex items-center justify-center font-bold">04</div>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">New Life</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        現地のマーケットやパートナーを通じて、新しい持ち主の元へ。モノの第二の人生が始まります。
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row gap-12">
+                <div class="md:w-1/3">
+                    <h2 class="text-3xl font-serif mb-6">Handling Items</h2>
+                    <p class="text-gray-500 leading-relaxed mb-8">
+                        玩具メーカーとしての知識を活かしたホビー類の取り扱いはもちろん、
+                        家具、雑貨、厨房機器まで幅広く対応可能です。
+                    </p>
+                    <a href="/contact" class="inline-flex items-center text-brand-cool font-bold border-b border-brand-cool pb-1 hover:opacity-70 transition-opacity">
+                        取扱品目の詳細はお問い合わせください
+                    </a>
+                </div>
+                <div class="md:w-2/3">
+                    <div class="grid grid-cols-2 md:grid-cols-3 gap-6">
+                        <div class="p-6 bg-brand-accent/30 rounded text-center hover:bg-brand-accent/50 transition-colors">
+                            <span class="text-3xl block mb-2">🧸</span>
+                            <span class="font-bold text-sm">Toys & Hobby</span>
+                        </div>
+                        <div class="p-6 bg-brand-accent/30 rounded text-center hover:bg-brand-accent/50 transition-colors">
+                            <span class="text-3xl block mb-2">🛋️</span>
+                            <span class="font-bold text-sm">Furniture</span>
+                        </div>
+                        <div class="p-6 bg-brand-accent/30 rounded text-center hover:bg-brand-accent/50 transition-colors">
+                            <span class="text-3xl block mb-2">🍽️</span>
+                            <span class="font-bold text-sm">Kitchenware</span>
+                        </div>
+                        <div class="p-6 bg-brand-accent/30 rounded text-center hover:bg-brand-accent/50 transition-colors">
+                            <span class="text-3xl block mb-2">👜</span>
+                            <span class="font-bold text-sm">Bags & Shoes</span>
+                        </div>
+                        <div class="p-6 bg-brand-accent/30 rounded text-center hover:bg-brand-accent/50 transition-colors">
+                            <span class="text-3xl block mb-2">🎸</span>
+                            <span class="font-bold text-sm">Musical Inst.</span>
+                        </div>
+                        <div class="p-6 bg-brand-accent/30 rounded text-center hover:bg-brand-accent/50 transition-colors">
+                            <span class="text-3xl block mb-2">🚲</span>
+                            <span class="font-bold text-sm">Bicycles</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-gray text-center">
+        <div class="container mx-auto px-6 max-w-3xl">
+            <h2 class="text-3xl font-serif mb-6">Partnership</h2>
+            <p class="text-gray-600 mb-10 leading-relaxed">
+                不用品回収業者様、遺品整理業者様、法人の在庫処分をご検討の企業様。<br>
+                その在庫を、コストではなく「資産」に変えませんか？<br>
+                コンテナ単位での買取・輸出代行も承っております。
+            </p>
+            <div class="flex flex-col md:flex-row justify-center gap-6">
+                <a href="/contact" class="inline-flex items-center justify-center px-10 py-4 bg-brand-cool text-white rounded-full font-bold tracking-widest hover:bg-brand-dark transition-colors shadow-lg hover:shadow-xl min-w-[240px]">
+                    ビジネスパートナー相談
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-white">Plan-tio</a>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end gap-6 text-xs font-bold tracking-widest">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-end gap-8 md:gap-12 text-left md:text-right">
+                    <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="service.html" class="hover:text-white transition-colors">SERVICE</a>
+                        <div class="flex flex-col gap-2 text-[11px] tracking-[0.2em] text-gray-400 md:items-end">
+                            <a href="originalbrand-detail.html" class="hover:text-white transition-colors">ORIGINAL BRAND</a>
+                            <a href="oem-detail.html" class="hover:text-white transition-colors">OEM / ODM</a>
+                            <a href="cycleup-detail.html" class="hover:text-white transition-colors">CYCLE UP</a>
+                            <a href="marketaccess-detail.html" class="hover:text-white transition-colors">MARKET ACCESS</a>
+                        </div>
+                    </div>
+
+                    <a href="company.html" class="hover:text-white transition-colors">COMPANY</a>
+                </div>
+
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border border-white text-xs font-bold tracking-widest hover:bg-white hover:text-gray-900 transition-colors">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="px-6 pb-8 text-center text-[11px] text-gray-500">
+            <p>&copy; 2026 Plan-tio Co.,Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header Reveal
+        gsap.from(".gs-header", {
+            y: 50, opacity: 0, duration: 1.2, ease: "power3.out", stagger: 0.2
+        });
+        
+        // Image Parallax
+        gsap.to(".gs-image img", {
+            yPercent: 20,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".gs-image",
+                start: "top bottom",
+                end: "bottom top",
+                scrub: true
+            }
+        });
+
+        // Metrics Reveal
+        gsap.from(".gs-reveal-left", {
+            x: 50, opacity: 0, duration: 1, ease: "power2.out",
+            scrollTrigger: { trigger: ".gs-reveal-left", start: "top 80%" }
+        });
+        gsap.from(".gs-reveal-right", {
+            x: -50, opacity: 0, duration: 1, ease: "power2.out",
+            scrollTrigger: { trigger: ".gs-reveal-right", start: "top 80%" }
+        });
+
+        // Steps Stagger
+        gsap.from(".gs-step", {
+            y: 50, opacity: 0, duration: 0.8, stagger: 0.2, ease: "power2.out",
+            scrollTrigger: { trigger: ".gs-step", start: "top 85%" }
+        });
+    </script>
+</body>
+</html>
