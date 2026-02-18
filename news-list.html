@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Room | 株式会社プランティオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            warm: '#E67E22',
+                            cool: '#2C7873',
+                            dark: '#111827',
+                            gray: '#F3F4F6',
+                            gold: '#C5A059'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        en: ['"Outfit"', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        .news-card:hover .news-title { color: #C5A059; }
+    </style>
+</head>
+<body class="bg-white text-brand-dark antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-gray-900">Plan-tio</a>
+
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <div class="relative group">
+                    <a href="service-list.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
+                        SERVICE
+                        <span class="text-[10px]">▾</span>
+                    </a>
+                    <div class="absolute left-0 top-full mt-3 w-64 rounded-xl border border-gray-100 bg-white shadow-lg p-3 invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                        <a href="originalbrand-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                        <a href="oem-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                        <a href="cycleup-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                        <a href="marketaccess-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                    </div>
+                </div>
+                <a href="news-list.html" class="relative text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-full after:bg-current">NEWS</a>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+            </div>
+
+            <button
+                type="button"
+                id="menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く"
+                class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 text-gray-900"
+            >
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="block w-5 h-0.5 bg-current"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md overflow-hidden max-h-0 opacity-0 -translate-y-2 pointer-events-none transition-all duration-300 ease-out">
+            <div class="px-6 py-5 flex flex-col gap-4 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="hover:text-gray-900 transition-colors">ABOUT</a>
+                <a href="service-list.html" class="hover:text-gray-900 transition-colors">SERVICE</a>
+                <a href="originalbrand-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                <a href="oem-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                <a href="cycleup-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                <a href="marketaccess-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                <a href="news-list.html" class="hover:text-gray-900 transition-colors">NEWS</a>
+                <a href="company.html" class="hover:text-gray-900 transition-colors">COMPANY</a>
+                <a href="contact.html" class="hover:text-gray-900 transition-colors">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="pt-28 md:pt-36 pb-8 bg-gradient-to-b from-brand-gray to-white border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-6">
+            <p class="text-brand-gold font-en tracking-[0.28em] text-[11px] font-bold mb-3 gs-fade">LATEST UPDATES</p>
+            <h1 class="text-3xl md:text-5xl font-serif font-medium leading-[1.35] gs-fade">News Room</h1>
+            <p class="text-sm text-gray-500 mt-4 max-w-2xl gs-fade">
+                プランティオの最新情報をカテゴリ別でお届けします。製品リリース、企業情報、サイクルアップの取り組みなどを掲載しています。
+            </p>
+        </div>
+    </header>
+
+    <div class="sticky top-20 z-40 bg-white/95 backdrop-blur border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 md:px-6 py-4">
+            <div class="flex gap-2 overflow-x-auto no-scrollbar whitespace-nowrap" id="news-filters">
+                <button type="button" data-filter="all" class="filter-btn px-4 py-2 rounded-full text-[11px] font-bold tracking-widest bg-brand-dark text-white">ALL</button>
+                <button type="button" data-filter="corporate" class="filter-btn px-4 py-2 rounded-full text-[11px] font-bold tracking-widest bg-gray-100 text-gray-600">CORPORATE</button>
+                <button type="button" data-filter="product" class="filter-btn px-4 py-2 rounded-full text-[11px] font-bold tracking-widest bg-gray-100 text-gray-600">PRODUCT</button>
+                <button type="button" data-filter="cycleup" class="filter-btn px-4 py-2 rounded-full text-[11px] font-bold tracking-widest bg-gray-100 text-gray-600">CYCLE UP</button>
+                <button type="button" data-filter="media" class="filter-btn px-4 py-2 rounded-full text-[11px] font-bold tracking-widest bg-gray-100 text-gray-600">MEDIA</button>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-4 md:px-6 py-8 md:py-14">
+        <section class="grid grid-cols-1 lg:grid-cols-12 gap-5 md:gap-8 mb-8 md:mb-12">
+            <a href="#" data-category="corporate" class="news-item news-card lg:col-span-8 group rounded-2xl overflow-hidden border border-gray-200 bg-white shadow-sm hover:shadow-xl transition-all duration-300 gs-reveal">
+                <div class="relative aspect-[4/3] md:aspect-[16/9] overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb7d5b43?q=80&w=2070&auto=format&fit=crop" alt="Featured News" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    <span class="absolute top-4 left-4 text-[10px] px-3 py-1 rounded-full bg-brand-warm text-white font-bold tracking-[0.16em]">FEATURED</span>
+                </div>
+                <div class="p-5 md:p-7">
+                    <div class="flex items-center gap-3 text-xs mb-3">
+                        <time class="font-en text-gray-400">2026.02.28</time>
+                        <span class="px-2 py-1 rounded border border-brand-dark text-brand-dark font-bold text-[10px] tracking-wider">CORPORATE</span>
+                    </div>
+                    <h2 class="news-title text-xl md:text-3xl font-serif leading-[1.45] transition-colors">本社移転および、新ショールーム「Plan-tio Lab」開設のお知らせ</h2>
+                    <p class="text-sm text-gray-500 leading-relaxed mt-4">事業拡大に伴い、本社機能を拡張移転いたしました。ショールームでは最新の木製玩具コレクションを実際に手に取って体験いただけます。</p>
+                </div>
+            </a>
+
+            <div class="lg:col-span-4 grid grid-cols-1 gap-5">
+                <a href="#" data-category="cycleup" class="news-item news-card group rounded-2xl border border-gray-200 bg-white p-5 md:p-6 hover:shadow-lg transition-all gs-reveal">
+                    <div class="flex items-center justify-between text-xs mb-3">
+                        <time class="font-en text-gray-400">2026.01.20</time>
+                        <span class="px-2 py-1 rounded border border-brand-cool text-brand-cool font-bold text-[10px] tracking-wider">CYCLE UP</span>
+                    </div>
+                    <h3 class="news-title font-serif text-lg leading-[1.5] transition-colors">フィリピン・マニラ港への第50回コンテナ輸出が完了しました</h3>
+                </a>
+                <a href="#" data-category="media" class="news-item news-card group rounded-2xl border border-gray-200 bg-white p-5 md:p-6 hover:shadow-lg transition-all gs-reveal">
+                    <div class="flex items-center justify-between text-xs mb-3">
+                        <time class="font-en text-gray-400">2025.11.05</time>
+                        <span class="px-2 py-1 rounded border border-gray-400 text-gray-500 font-bold text-[10px] tracking-wider">MEDIA</span>
+                    </div>
+                    <h3 class="news-title font-serif text-lg leading-[1.5] transition-colors">ビジネス誌「Forbes Japan」にて、弊社のサイクルアップ事業が紹介されました</h3>
+                </a>
+            </div>
+        </section>
+
+        <section class="border-t border-gray-200" id="news-list">
+            <a href="#" data-category="product" class="news-item news-card group grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 py-6 border-b border-gray-100 transition-colors hover:bg-gray-50 rounded-xl px-3 gs-reveal">
+                <time class="font-en text-sm text-gray-400">2026.02.15</time>
+                <h3 class="news-title text-sm md:text-base leading-relaxed transition-colors">2026年新作木製玩具コレクション「Mori-no-Oto」の販売を開始しました</h3>
+                <div class="flex items-center gap-3 justify-between md:justify-end">
+                    <span class="px-2 py-1 rounded border border-brand-warm text-brand-warm font-bold text-[10px] tracking-wider">PRODUCT</span>
+                    <span class="text-gray-300 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </a>
+
+            <a href="#" data-category="corporate" class="news-item news-card group grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 py-6 border-b border-gray-100 transition-colors hover:bg-gray-50 rounded-xl px-3 gs-reveal">
+                <time class="font-en text-sm text-gray-400">2025.12.10</time>
+                <h3 class="news-title text-sm md:text-base leading-relaxed transition-colors">年末年始の営業日についてのお知らせ</h3>
+                <div class="flex items-center gap-3 justify-between md:justify-end">
+                    <span class="px-2 py-1 rounded border border-brand-dark text-brand-dark font-bold text-[10px] tracking-wider">CORPORATE</span>
+                    <span class="text-gray-300 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </a>
+
+            <a href="#" data-category="product" class="news-item news-card group grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 py-6 border-b border-gray-100 transition-colors hover:bg-gray-50 rounded-xl px-3 gs-reveal">
+                <time class="font-en text-sm text-gray-400">2025.10.15</time>
+                <h3 class="news-title text-sm md:text-base leading-relaxed transition-colors">【OEM事例】大手アパレルブランド様のノベルティ玩具を開発いたしました</h3>
+                <div class="flex items-center gap-3 justify-between md:justify-end">
+                    <span class="px-2 py-1 rounded border border-brand-warm text-brand-warm font-bold text-[10px] tracking-wider">PRODUCT</span>
+                    <span class="text-gray-300 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </a>
+
+            <a href="#" data-category="cycleup" class="news-item news-card group grid grid-cols-1 md:grid-cols-[180px_1fr_auto] items-center gap-4 py-6 border-b border-gray-100 transition-colors hover:bg-gray-50 rounded-xl px-3 gs-reveal">
+                <time class="font-en text-sm text-gray-400">2025.09.22</time>
+                <h3 class="news-title text-sm md:text-base leading-relaxed transition-colors">東南アジア現地パートナーとの新規提携を締結しました</h3>
+                <div class="flex items-center gap-3 justify-between md:justify-end">
+                    <span class="px-2 py-1 rounded border border-brand-cool text-brand-cool font-bold text-[10px] tracking-wider">CYCLE UP</span>
+                    <span class="text-gray-300 group-hover:translate-x-1 transition-transform">→</span>
+                </div>
+            </a>
+        </section>
+
+        <div class="mt-8 md:mt-10 flex items-center justify-center">
+            <button class="inline-flex items-center justify-center px-8 py-3 border border-gray-300 rounded-full text-xs md:text-sm font-bold tracking-widest text-gray-600 hover:bg-brand-dark hover:border-brand-dark hover:text-white transition-colors">
+                LOAD MORE
+            </button>
+        </div>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-white">Plan-tio</a>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end gap-6 text-xs font-bold tracking-widest">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-end gap-8 md:gap-12 text-left md:text-right">
+                    <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="service-list.html" class="hover:text-white transition-colors">SERVICE</a>
+                        <div class="flex flex-col gap-2 text-[11px] tracking-[0.2em] text-gray-400 md:items-end">
+                            <a href="originalbrand-detail.html" class="hover:text-white transition-colors">ORIGINAL BRAND</a>
+                            <a href="oem-detail.html" class="hover:text-white transition-colors">OEM / ODM</a>
+                            <a href="cycleup-detail.html" class="hover:text-white transition-colors">CYCLE UP</a>
+                            <a href="marketaccess-detail.html" class="hover:text-white transition-colors">MARKET ACCESS</a>
+                        </div>
+                    </div>
+
+                    <a href="news-list.html" class="hover:text-white transition-colors">NEWS</a>
+                    <a href="company.html" class="hover:text-white transition-colors">COMPANY</a>
+                </div>
+
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border border-white text-xs font-bold tracking-widest hover:bg-white hover:text-gray-900 transition-colors">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="px-6 pb-8 text-center text-[11px] text-gray-500">
+            <p>&copy; 2026 Plan-tio Co.,Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        (function () {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            const openClasses = ['max-h-[420px]', 'opacity-100', 'translate-y-0', 'pointer-events-auto'];
+            const closedClasses = ['max-h-0', 'opacity-0', '-translate-y-2', 'pointer-events-none'];
+
+            function openMenu() {
+                mobileMenu.classList.remove(...closedClasses);
+                mobileMenu.classList.add(...openClasses);
+                menuButton.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.remove(...openClasses);
+                mobileMenu.classList.add(...closedClasses);
+                menuButton.setAttribute('aria-expanded', 'false');
+            }
+
+            menuButton.addEventListener('click', function () {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    closeMenu();
+                });
+            });
+        })();
+
+        (function () {
+            const filterButtons = document.querySelectorAll('.filter-btn');
+            const newsItems = document.querySelectorAll('.news-item');
+
+            filterButtons.forEach(function (button) {
+                button.addEventListener('click', function () {
+                    const target = button.getAttribute('data-filter');
+
+                    filterButtons.forEach(function (btn) {
+                        btn.classList.remove('bg-brand-dark', 'text-white');
+                        btn.classList.add('bg-gray-100', 'text-gray-600');
+                    });
+                    button.classList.remove('bg-gray-100', 'text-gray-600');
+                    button.classList.add('bg-brand-dark', 'text-white');
+
+                    newsItems.forEach(function (item) {
+                        const category = item.getAttribute('data-category');
+                        const isVisible = target === 'all' || category === target;
+                        item.classList.toggle('hidden', !isVisible);
+                    });
+                });
+            });
+        })();
+
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from('.gs-fade', {
+            y: 18,
+            opacity: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: 'power2.out'
+        });
+
+        gsap.utils.toArray('.gs-reveal').forEach(function (elem) {
+            gsap.fromTo(
+                elem,
+                { opacity: 0, y: 24 },
+                {
+                    opacity: 1,
+                    y: 0,
+                    duration: 0.7,
+                    ease: 'power2.out',
+                    scrollTrigger: { trigger: elem, start: 'top 92%' }
+                }
+            );
+        });
+    </script>
+</body>
+</html>
