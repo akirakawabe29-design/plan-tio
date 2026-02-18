@@ -29,7 +29,10 @@
         }
     </script>
     <style>
-        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        .clip-diagonal { clip-path: none; }
+        @media (min-width: 768px) {
+            .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        }
         .parallax-bg { background-attachment: fixed; background-position: center; background-repeat: no-repeat; background-size: cover; }
         /* Mobile adjustment for parallax */
         @media (max-width: 768px) { .parallax-bg { background-attachment: scroll; } }
@@ -219,7 +222,7 @@
 
                 <div class="gs-step group">
                     <div class="h-64 overflow-hidden rounded-lg mb-6 relative">
-                        <img src="https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=2070&auto=format&fit=crop" 
+                        <img src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=80&w=2070&auto=format&fit=crop" 
                              alt="Container Loading" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-80">
                         <div class="absolute top-4 left-4 w-10 h-10 bg-brand-cool rounded-full flex items-center justify-center font-bold">02</div>
                     </div>
