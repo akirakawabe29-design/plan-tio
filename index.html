@@ -4,40 +4,59 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>株式会社プランティオ | Creating Smiles, Cycling Value.</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
     
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;600&display=swap" rel="stylesheet">
-
     <script>
         tailwind.config = {
             theme: {
                 extend: {
                     colors: {
                         brand: {
-                            warm: '#E67E22', // おもちゃ・温かみ
-                            cool: '#2C7873', // サイクルアップ・信頼・サステナブル
-                            dark: '#1A202C',
-                            light: '#F7FAFC',
+                            warm: '#E67E22', // Brand Business
+                            cool: '#2C7873', // Cycle Up Business
+                            dark: '#111827', // Black/Navy
+                            gray: '#F3F4F6', // Light Gray
+                            gold: '#C5A059', // Accent
                         }
                     },
                     fontFamily: {
                         sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
                         en: ['"Outfit"', 'sans-serif'],
                     }
                 }
             }
         }
     </script>
-    
     <style>
-        /* Custom Styles for nuances not covered by utilities */
-        body { font-feature-settings: "palt"; }
         .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-        .text-shadow-sm { text-shadow: 0 2px 4px rgba(0,0,0,0.3); }
+        .hover-underline-animation {
+            display: inline-block;
+            position: relative;
+        }
+        .hover-underline-animation::after {
+            content: '';
+            position: absolute;
+            width: 100%;
+            transform: scaleX(0);
+            height: 1px;
+            bottom: 0;
+            left: 0;
+            background-color: currentColor;
+            transform-origin: bottom right;
+            transition: transform 0.25s ease-out;
+        }
+        .hover-underline-animation:hover::after {
+            transform: scaleX(1);
+            transform-origin: bottom left;
+        }
+        .text-pretty {
+            text-wrap: pretty;
+        }
     </style>
 </head>
-<body class="bg-brand-light text-brand-dark overflow-x-hidden">
+<body class="bg-white text-brand-dark antialiased">
 
     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
@@ -46,7 +65,7 @@
             <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
                 <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
                 <div class="relative group">
-                    <a href="service.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
+                    <a href="service-list.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
                         SERVICE
                         <span class="text-[10px]">▾</span>
                     </a>
@@ -75,16 +94,16 @@
             </button>
         </div>
 
-        <div id="mobile-menu" class="md:hidden hidden border-t border-gray-100 bg-white/95 backdrop-blur-md">
+        <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md overflow-hidden max-h-0 opacity-0 -translate-y-2 pointer-events-none transition-all duration-300 ease-out">
             <div class="px-6 py-5 flex flex-col gap-4 text-xs font-bold tracking-widest text-gray-600">
-                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
-                <a href="service.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">SERVICE</a>
+                <a href="about.html" class="hover:text-gray-900 transition-colors">ABOUT</a>
+                <a href="service-list.html" class="hover:text-gray-900 transition-colors">SERVICE</a>
                 <a href="originalbrand-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
                 <a href="oem-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
                 <a href="cycleup-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">CYCLE UP</a>
                 <a href="marketaccess-detail.html" class="pl-3 text-[11px] tracking-[0.2em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
-                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
-                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+                <a href="company.html" class="hover:text-gray-900 transition-colors">COMPANY</a>
+                <a href="contact.html" class="hover:text-gray-900 transition-colors">CONTACT</a>
             </div>
         </div>
     </nav>
@@ -98,105 +117,394 @@
                 return;
             }
 
+            const openClasses = ['max-h-[420px]', 'opacity-100', 'translate-y-0', 'pointer-events-auto'];
+            const closedClasses = ['max-h-0', 'opacity-0', '-translate-y-2', 'pointer-events-none'];
+
+            function openMenu() {
+                mobileMenu.classList.remove(...closedClasses);
+                mobileMenu.classList.add(...openClasses);
+                menuButton.setAttribute('aria-expanded', 'true');
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.remove(...openClasses);
+                mobileMenu.classList.add(...closedClasses);
+                menuButton.setAttribute('aria-expanded', 'false');
+            }
+
             menuButton.addEventListener('click', function () {
-                const isHidden = mobileMenu.classList.toggle('hidden');
-                menuButton.setAttribute('aria-expanded', String(!isHidden));
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
             });
 
             mobileMenu.querySelectorAll('a').forEach(function (link) {
                 link.addEventListener('click', function () {
-                    mobileMenu.classList.add('hidden');
-                    menuButton.setAttribute('aria-expanded', 'false');
+                    closeMenu();
                 });
             });
         })();
     </script>
 
-    
-
-    <header class="relative h-screen flex flex-col md:flex-row overflow-hidden pt-20">
-        <div class="absolute inset-0 z-0">
-            <div class="absolute inset-0 bg-gradient-to-r from-gray-100 to-white opacity-90"></div>
+    <header class="relative h-[88vh] md:h-screen overflow-hidden pt-20">
+        <img
+            id="hero-image-a"
+            src="img/1000_F_1494606106_dvAwmeMyiQrvzyNsF2GsPxkl8vwqt93U.jpg"
+            alt="Plan-tio Hero"
+            class="absolute inset-0 w-full h-full object-cover opacity-100"
+            style="transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1);"
+        >
+        <img
+            id="hero-image-b"
+            src="img/1000_F_1494606106_dvAwmeMyiQrvzyNsF2GsPxkl8vwqt93U.jpg"
+            alt="Plan-tio Hero"
+            class="absolute inset-0 w-full h-full object-cover opacity-0"
+            style="transition: opacity 1.6s cubic-bezier(0.22, 1, 0.36, 1);"
+        >
+        <div class="absolute inset-0 bg-gradient-to-r from-black/60 via-black/40 to-black/20"></div>
+        <div class="relative z-10 h-full max-w-7xl mx-auto px-6 flex items-center">
+            <div class="max-w-3xl text-white">
+                <p class="font-en tracking-[0.35em] text-xs md:text-sm mb-5 opacity-0 animate-fade-up">
+                    CREATING SMILES, CYCLING VALUE.
+                </p>
+                <h1 class="text-4xl md:text-6xl lg:text-7xl font-serif font-medium leading-[1.4] mb-6 opacity-0 animate-fade-up delay-100">
+                    価値あるものを、<br>
+                    次の誰かへつなぐ。
+                </h1>
+                <p class="text-sm md:text-base text-white/85 leading-loose max-w-2xl opacity-0 animate-fade-up delay-200">
+                    日本の品質と遊び心を世界へ届ける「創造」と、
+                    モノの価値を循環させる「再流通」を両輪に、
+                    未来へ続く事業をデザインします。
+                </p>
+            </div>
         </div>
-
-        <div class="relative z-10 container mx-auto px-4 h-full flex flex-col justify-center items-center text-center">
-            <p class="font-en text-brand-cool font-bold tracking-[0.2em] mb-4 opacity-0 animate-fade-up" id="hero-subtitle">JAPAN QUALITY TO THE WORLD</p>
-            <h1 class="text-4xl md:text-6xl lg:text-7xl font-bold leading-[1.3] mb-8">
-                <span class="block overflow-hidden"><span class="block transform translate-y-full hero-text-reveal">価値あるものを、</span></span>
-                <span class="block overflow-hidden"><span class="block transform translate-y-full hero-text-reveal">次の誰かへ。</span></span>
-            </h1>
-            <p class="max-w-xl text-gray-600 text-lg mb-10 opacity-0 hero-desc">
-                私たちは「創造」と「循環」の架け橋です。<br>
-                日本で愛されたモノに、世界という新しいステージを。
-            </p>
-        </div>
-        
-        <div class="absolute top-1/2 left-0 w-64 h-64 bg-brand-warm rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-        <div class="absolute top-1/3 right-0 w-64 h-64 bg-brand-cool rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+        <a href="#philosophy" class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 text-white/90 hover:text-white transition-colors flex flex-col items-center gap-2">
+            <span class="font-en text-[10px] tracking-[0.35em]">SCROLL</span>
+            <span class="w-px h-10 bg-white/70 animate-bounce"></span>
+        </a>
     </header>
 
-    <section id="cycle-up" class="py-24 bg-brand-dark text-white relative clip-diagonal">
-        <div class="container mx-auto px-4 relative z-10">
-            <div class="flex flex-col md:flex-row gap-12 items-center">
-                <div class="md:w-1/2 gs-reveal-left">
-                    <div class="inline-block px-4 py-1 border border-brand-cool text-brand-cool rounded-full text-xs font-bold mb-4 tracking-widest">GLOBAL RE-COMMERCE</div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight">
-                        日本の"MOTTAINAI"を<br>
-                        世界のスタンダードに。
-                    </h2>
-                    <p class="text-gray-400 mb-8 leading-relaxed">
-                        日本では役割を終えた製品も、海を渡れば誰かの宝物になります。
-                        私たちは独自の物流ネットワークを構築し、日本製品の高品質な中古品を世界中のマーケットへ供給。
-                        廃棄を減らし、価値を循環させる。これは単なる輸出事業ではなく、地球規模のサステナビリティへの挑戦です。
-                    </p>
-                    
-                    <div class="grid grid-cols-2 gap-8 border-t border-gray-700 pt-8">
-                        <div>
-                            <div class="text-3xl font-en font-bold text-brand-cool count-up" data-val="15">0</div>
-                            <div class="text-xs text-gray-500 mt-1">Export Countries<br>輸出対象国</div>
-                        </div>
-                        <div>
-                            <div class="text-3xl font-en font-bold text-brand-cool count-up" data-val="200">0</div>
-                            <div class="text-xs text-gray-500 mt-1">Containers / Year<br>年間取扱コンテナ数</div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2 h-[500px] w-full relative rounded-2xl overflow-hidden gs-reveal-right group">
-                     <img src="https://images.unsplash.com/photo-1494412574643-35d324698420?q=80&w=2070&auto=format&fit=crop" 
-                         alt="Global Logistics" 
-                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 hover:opacity-100">
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent flex items-end p-8">
-                        <p class="font-en text-xl font-bold">Connecting Borders</p>
-                    </div>
-                </div>
+    <section id="philosophy" class="min-h-screen bg-white border-b border-gray-100 flex items-center">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="gs-reveal text-center">
+                <span class="block text-brand-gold font-en tracking-[0.3em] text-xs font-bold mb-6">OUR PHILOSOPHY</span>
+                <h2 class="text-3xl md:text-5xl font-serif font-medium leading-[1.42] mb-8 text-pretty" style="line-height: 1.42;">
+                    笑顔の総量を、<br>
+                    地球規模で最大化する。
+                </h2>
+                <p class="text-gray-600 leading-loose text-sm md:text-base text-pretty">
+                    一つのモノが作られ、愛され、そして役割を終える。
+                    従来、そこで途切れていた物語を、私たちは再び紡ぎ直します。
+                    <br><br>
+                    「自社ブランド」で生み出す、安全で温かい日本の遊び心。
+                    「サイクルアップ」で実現する、国境を越えた価値の再定義。
+                    <br><br>
+                    創造と循環。この二つのエンジンで、
+                    持続可能な社会と子供たちの未来に貢献することが、私たちの使命です。
+                </p>
             </div>
         </div>
     </section>
 
-    <section id="brand" class="py-24 bg-white relative">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row-reverse gap-12 items-center">
-                <div class="md:w-1/2 gs-reveal-right">
-                    <div class="inline-block px-4 py-1 border border-brand-warm text-brand-warm rounded-full text-xs font-bold mb-4 tracking-widest">ORIGINAL PRODUCT</div>
-                    <h2 class="text-4xl md:text-5xl font-bold mb-6 leading-tight text-brand-dark">
-                        手触りのある幸せを<br>
-                        創造し続ける。
-                    </h2>
-                    <p class="text-gray-600 mb-8 leading-relaxed">
-                        創業以来の柱である自社ブランド事業。3児の母である代表の視点を活かし、安全性とデザイン性を両立させた玩具・雑貨を企画開発しています。
-                        この「モノづくり」のDNAがあるからこそ、私たちは製品の価値を深く理解し、サイクルアップ事業においても適切な扱いができるのです。
-                    </p>
-                    <a href="#" class="inline-flex items-center text-brand-warm font-bold hover:underline group">
-                        商品ラインナップを見る 
-                        <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path></svg>
-                    </a>
+    <section class="relative h-screen flex flex-col md:flex-row overflow-hidden">
+        <div class="w-full md:w-1/2 h-1/2 md:h-full relative group overflow-hidden">
+            <div class="absolute inset-0 bg-black/20 group-hover:bg-black/10 transition-colors z-10"></div>
+            <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=2070&auto=format&fit=crop"
+                 alt="Original Brand"
+                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+            <div class="absolute inset-0 flex flex-col justify-center items-center z-20 text-white text-center p-6">
+                <span class="font-en tracking-[0.2em] text-sm mb-2 opacity-0 animate-fade-up">CREATION</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 opacity-0 animate-fade-up delay-100">Original Brand</h2>
+                <a href="originalbrand-detail.html" class="border border-white px-8 py-3 rounded-full text-xs font-bold hover:bg-white hover:text-brand-warm transition-all opacity-0 animate-fade-up delay-200">
+                    VIEW PRODUCTS
+                </a>
+            </div>
+        </div>
+
+        <div class="w-full md:w-1/2 h-1/2 md:h-full relative group overflow-hidden">
+            <div class="absolute inset-0 bg-black/25 group-hover:bg-black/15 transition-colors z-10"></div>
+            <img src="img/1000_F_480532590_RpTPW1ltafPMFiljcRZAE8u0GDMqnWba.jpg"
+                 alt="Cycle Up"
+                 class="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105">
+            <div class="absolute inset-0 flex flex-col justify-center items-center z-20 text-white text-center p-6">
+                <span class="font-en tracking-[0.2em] text-sm mb-2 opacity-0 animate-fade-up">CIRCULATION</span>
+                <h2 class="text-4xl md:text-5xl font-serif font-bold mb-6 opacity-0 animate-fade-up delay-100">Global Cycle Up</h2>
+                <a href="cycleup-detail.html" class="border border-white px-8 py-3 rounded-full text-xs font-bold hover:bg-white hover:text-brand-cool transition-all opacity-0 animate-fade-up delay-200">
+                    VIEW SOLUTIONS
+                </a>
+            </div>
+        </div>
+
+        <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-30 pointer-events-none mix-blend-difference text-white text-center w-full">
+            <h2 class="text-6xl md:text-8xl font-en font-bold tracking-tighter opacity-0 animate-scale-in">Plan-tio</h2>
+            <p class="text-sm font-bold tracking-[0.5em] mt-2 opacity-0 animate-fade-up delay-300">JAPAN QUALITY TO THE WORLD</p>
+        </div>
+    </section>
+
+    <section id="news" class="py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-5xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 border-b border-gray-200 pb-4">
+                <div>
+                    <span class="text-brand-gold font-en tracking-widest text-xs font-bold">LATEST INFORMATION</span>
+                    <h2 class="text-3xl font-serif mt-2">News & Topics</h2>
                 </div>
-                <div class="md:w-1/2 h-[500px] w-full relative rounded-2xl overflow-hidden gs-reveal-left shadow-2xl group">
-                    <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=2070&auto=format&fit=crop" 
-                         alt="Kids Playing" 
-                         class="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <a href="#" class="hidden md:inline-block text-xs font-bold hover-underline-animation">VIEW ALL →</a>
+            </div>
+
+            <div class="flex flex-col">
+                <a href="#" class="group py-6 border-b border-gray-100 flex flex-col md:flex-row gap-4 md:items-center hover:bg-gray-50 transition-colors px-4 -mx-4 rounded gs-reveal">
+                    <div class="flex items-center gap-4 md:w-1/4">
+                        <time class="text-sm text-gray-400 font-en">2026.02.15</time>
+                        <span class="text-[10px] font-bold border border-brand-warm text-brand-warm px-2 py-0.5 rounded">PRESS</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-sm md:text-base font-medium group-hover:text-brand-warm transition-colors">
+                            2026年新作木製玩具コレクション「Mori-no-Oto」の販売を開始しました
+                        </h3>
+                    </div>
+                    <div class="hidden md:block text-gray-300 group-hover:translate-x-2 transition-transform">→</div>
+                </a>
+
+                <a href="#" class="group py-6 border-b border-gray-100 flex flex-col md:flex-row gap-4 md:items-center hover:bg-gray-50 transition-colors px-4 -mx-4 rounded gs-reveal">
+                    <div class="flex items-center gap-4 md:w-1/4">
+                        <time class="text-sm text-gray-400 font-en">2026.01.20</time>
+                        <span class="text-[10px] font-bold border border-brand-cool text-brand-cool px-2 py-0.5 rounded">CYCLE UP</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-sm md:text-base font-medium group-hover:text-brand-cool transition-colors">
+                            フィリピン・マニラ港への第50回コンテナ輸出が完了しました
+                        </h3>
+                    </div>
+                    <div class="hidden md:block text-gray-300 group-hover:translate-x-2 transition-transform">→</div>
+                </a>
+
+                <a href="#" class="group py-6 border-b border-gray-100 flex flex-col md:flex-row gap-4 md:items-center hover:bg-gray-50 transition-colors px-4 -mx-4 rounded gs-reveal">
+                    <div class="flex items-center gap-4 md:w-1/4">
+                        <time class="text-sm text-gray-400 font-en">2025.12.10</time>
+                        <span class="text-[10px] font-bold border border-brand-dark text-brand-dark px-2 py-0.5 rounded">COMPANY</span>
+                    </div>
+                    <div class="md:w-3/4">
+                        <h3 class="text-sm md:text-base font-medium group-hover:text-brand-gold transition-colors">
+                            年末年始の営業日についてのお知らせ
+                        </h3>
+                    </div>
+                    <div class="hidden md:block text-gray-300 group-hover:translate-x-2 transition-transform">→</div>
+                </a>
+            </div>
+            
+            <div class="mt-8 text-center md:hidden">
+                <a href="#" class="text-xs font-bold border border-gray-300 px-6 py-3 rounded-full inline-block">ニュース一覧へ</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-brand-gray clip-diagonal">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 gs-reveal">
+                <span class="text-brand-gold font-en tracking-widest text-xs font-bold">OUR SERVICES</span>
+                <h2 class="text-3xl font-serif mt-2">Business Domains</h2>
+                <p class="text-sm text-gray-500 mt-4">企画から再流通まで。価値のライフサイクルをデザインする4つの事業。</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <a href="originalbrand-detail.html" class="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden gs-stagger">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?q=80&w=2070&auto=format&fit=crop"
+                             alt="Original Brand"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2 text-brand-warm">Original Brand</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            3児の母の視点と安全性を融合した、自社オリジナル玩具の企画・開発。
+                        </p>
+                    </div>
+                </a>
+                <a href="cycleup-detail.html" class="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden gs-stagger">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="img/1000_F_480532590_RpTPW1ltafPMFiljcRZAE8u0GDMqnWba.jpg"
+                             alt="Cycle Up"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2 text-brand-cool">Cycle Up</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            日本製品を世界へ。独自の物流網による輸出・リユース事業。
+                        </p>
+                    </div>
+                </a>
+                <a href="oem-detail.html" class="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden gs-stagger">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=2070&auto=format&fit=crop"
+                             alt="OEM ODM"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2 text-brand-dark">OEM / ODM</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            ST基準準拠。貴社ブランドの価値を高める高品質な製品開発をサポート。
+                        </p>
+                    </div>
+                </a>
+                <a href="marketaccess-detail.html" class="group bg-white rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden gs-stagger">
+                    <div class="aspect-[4/3] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1556742049-0cfed4f7a07d?q=80&w=2070&auto=format&fit=crop"
+                             alt="Market Access"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="font-bold mb-2 text-brand-gold">Market Access</h3>
+                        <p class="text-xs text-gray-500 leading-relaxed">
+                            海外製品の輸入実務からEC展開までを一気通貫で支援するゲートウェイ。
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-10 gs-reveal">
+                <span class="text-brand-gold font-en tracking-widest text-xs font-bold">FEATURE MOVIE</span>
+                <h2 class="text-3xl font-serif mt-2">Plan-tio Service Movie</h2>
+                <p class="text-sm text-gray-500 mt-4">
+                    プランティオのサービスを動画でご紹介します。
+                </p>
+            </div>
+
+            <div class="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl border border-gray-200 gs-reveal">
+                <video
+                    class="w-full h-auto bg-black"
+                    autoplay
+                    muted
+                    loop
+                    playsinline
+                    preload="metadata"
+                >
+                    <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                    お使いのブラウザは動画再生に対応していません。
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white border-t border-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gs-reveal">
+                <div>
+                    <span class="text-brand-gold font-en tracking-widest text-xs font-bold">COLUMN</span>
+                    <h2 class="text-3xl font-serif mt-2">Insights & Stories</h2>
                 </div>
             </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <a href="mission.html" class="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 gs-stagger">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=2070&auto=format&fit=crop"
+                             alt="Column 1"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-[10px] font-bold tracking-widest text-brand-gold mb-3">SUSTAINABILITY</p>
+                        <h3 class="font-serif text-xl mb-3 group-hover:text-brand-cool transition-colors">
+                            循環型ビジネスを続けるための3つの視点
+                        </h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            日々の現場で見えてきた、持続可能性と事業性を両立させる実践ポイントを解説します。
+                        </p>
+                    </div>
+                </a>
+
+                <a href="oem-detail.html" class="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 gs-stagger">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1515488764276-beab7607c1e6?q=80&w=2070&auto=format&fit=crop"
+                             alt="Original Brand Toys"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-[10px] font-bold tracking-widest text-brand-gold mb-3">PRODUCT DEVELOPMENT</p>
+                        <h3 class="font-serif text-xl mb-3 group-hover:text-brand-cool transition-colors">
+                            OEM開発で品質を安定させるチェックリスト
+                        </h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            仕様策定から量産まで、品質ブレを抑えるために押さえるべき工程管理の要点をまとめました。
+                        </p>
+                    </div>
+                </a>
+
+                <a href="marketaccess-detail.html" class="group bg-white border border-gray-200 rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-1 gs-stagger">
+                    <div class="aspect-[16/10] overflow-hidden">
+                        <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=2070&auto=format&fit=crop"
+                             alt="Column 3"
+                             class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                    </div>
+                    <div class="p-6">
+                        <p class="text-[10px] font-bold tracking-widest text-brand-gold mb-3">GLOBAL EXPANSION</p>
+                        <h3 class="font-serif text-xl mb-3 group-hover:text-brand-cool transition-colors">
+                            海外ブランドを日本展開する時の実務フロー
+                        </h3>
+                        <p class="text-sm text-gray-500 leading-relaxed">
+                            輸入・法令対応・EC販売まで、マーケットアクセス立ち上げ時の全体像を整理します。
+                        </p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-24 bg-white overflow-hidden">
+        <div class="container mx-auto px-6 mb-12 flex justify-between items-end">
+            <div class="gs-reveal">
+                <span class="text-brand-gold font-en tracking-widest text-xs font-bold flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    INSTAGRAM
+                </span>
+                <h2 class="text-3xl font-serif mt-2">Life with Plan-tio</h2>
+            </div>
+            <a href="https://instagram.com" target="_blank" class="hidden md:inline-flex items-center gap-2 text-xs font-bold bg-gray-100 hover:bg-gray-200 px-4 py-2 rounded-full transition-colors">
+                FOLLOW US @plan_tio_official
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-1 md:gap-4 px-1 md:px-6">
+            <a href="#" class="group relative aspect-[4/5] overflow-hidden bg-gray-100 block gs-stagger-img">
+                <img src="https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?q=80&w=2070&auto=format&fit=crop" 
+                     alt="Insta Post" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                    ♥ 124
+                </div>
+            </a>
+            <a href="#" class="group relative aspect-[4/5] overflow-hidden bg-gray-100 block gs-stagger-img">
+                <img src="https://images.unsplash.com/photo-1519689680058-324335c77eba?q=80&w=2070&auto=format&fit=crop" 
+                     alt="Insta Post" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                    ♥ 89
+                </div>
+            </a>
+            <a href="#" class="group relative aspect-[4/5] overflow-hidden bg-gray-100 block gs-stagger-img">
+                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?q=80&w=2070&auto=format&fit=crop" 
+                     alt="Insta Post" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                    ♥ 245
+                </div>
+            </a>
+            <a href="#" class="group relative aspect-[4/5] overflow-hidden bg-gray-100 block gs-stagger-img">
+                <img src="https://images.unsplash.com/photo-1503454537195-1dcabb73ffb9?q=80&w=2070&auto=format&fit=crop" 
+                     alt="Insta Post" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                <div class="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center text-white text-xs font-bold">
+                    ♥ 156
+                </div>
+            </a>
+        </div>
+        
+        <div class="mt-8 text-center md:hidden">
+            <a href="#" class="inline-flex items-center gap-2 text-xs font-bold border border-gray-300 px-6 py-3 rounded-full">
+                FOLLOW US ON INSTAGRAM
+            </a>
         </div>
     </section>
 
@@ -209,7 +517,7 @@
                     <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
 
                     <div class="flex flex-col gap-3">
-                        <a href="service.html" class="hover:text-white transition-colors">SERVICE</a>
+                        <a href="service-list.html" class="hover:text-white transition-colors">SERVICE</a>
                         <div class="flex flex-col gap-2 text-[11px] tracking-[0.2em] text-gray-400 md:items-end">
                             <a href="originalbrand-detail.html" class="hover:text-white transition-colors">ORIGINAL BRAND</a>
                             <a href="oem-detail.html" class="hover:text-white transition-colors">OEM / ODM</a>
@@ -235,61 +543,91 @@
     <script>
         gsap.registerPlugin(ScrollTrigger);
 
-        // Hero Text Reveal
-        gsap.to(".hero-text-reveal", {
-            y: 0,
-            duration: 1,
-            stagger: 0.2,
-            ease: "power4.out",
-            delay: 0.5
+        // CSS Animation Helper
+        document.head.insertAdjacentHTML("beforeend", `
+            <style>
+                @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+                @keyframes scaleIn { from { opacity: 0; transform: scale(0.9) translate(-50%, -50%); } to { opacity: 1; transform: scale(1) translate(-50%, -50%); } }
+                .animate-fade-up { animation: fadeUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+                .animate-scale-in { animation: scaleIn 1.2s cubic-bezier(0.22, 1, 0.36, 1) forwards; }
+            </style>
+        `);
+
+        // General Reveals
+        gsap.utils.toArray('.gs-reveal').forEach(elem => {
+            gsap.fromTo(elem, 
+                { opacity: 0, y: 30 },
+                { opacity: 1, y: 0, duration: 1, ease: "power2.out", scrollTrigger: { trigger: elem, start: "top 90%" } }
+            );
         });
 
-        gsap.to(["#hero-subtitle", ".hero-desc"], {
-            opacity: 1,
-            y: 0,
-            duration: 1,
-            delay: 1.2
-        });
-
-        // Reveal animations on scroll
-        const reveals = document.querySelectorAll(".gs-reveal-left, .gs-reveal-right");
-        
-        reveals.forEach((element) => {
-            const xVal = element.classList.contains("gs-reveal-left") ? -50 : 50;
-            
-            gsap.fromTo(element, 
-                { opacity: 0, x: xVal },
+        // Service card reveals (avoid hidden state before trigger)
+        gsap.utils.toArray(".gs-stagger").forEach((elem, index) => {
+            gsap.fromTo(
+                elem,
+                { opacity: 0, y: 24 },
                 {
                     opacity: 1,
-                    x: 0,
-                    duration: 1,
+                    y: 0,
+                    duration: 0.8,
+                    delay: index * 0.08,
                     ease: "power2.out",
-                    scrollTrigger: {
-                        trigger: element,
-                        start: "top 80%",
-                        toggleActions: "play none none reverse"
-                    }
+                    immediateRender: false,
+                    scrollTrigger: { trigger: elem, start: "top 88%" }
                 }
             );
         });
 
-        // Number Counter Animation for Impact Stats
-        const counters = document.querySelectorAll('.count-up');
-        counters.forEach(counter => {
-            const target = +counter.getAttribute('data-val');
-            gsap.to(counter, {
-                innerHTML: target,
-                duration: 2,
-                scrollTrigger: {
-                    trigger: counter,
-                    start: "top 85%",
-                },
-                snap: { innerHTML: 1 },
-                modifiers: {
-                    innerHTML: value => Math.floor(value) + (target > 100 ? "+" : "") 
-                }
-            });
+        // Instagram Images Stagger
+        gsap.from(".gs-stagger-img", {
+            opacity: 0, scale: 0.9, duration: 0.8, stagger: 0.1, ease: "back.out(1.7)",
+            scrollTrigger: { trigger: ".gs-stagger-img", start: "top 85%" }
         });
+
+        // Hero slideshow with soft crossfade transition
+        (function () {
+            const heroImageA = document.getElementById('hero-image-a');
+            const heroImageB = document.getElementById('hero-image-b');
+            if (!heroImageA || !heroImageB) {
+                return;
+            }
+
+            const heroImages = [
+                'img/1000_F_1494606106_dvAwmeMyiQrvzyNsF2GsPxkl8vwqt93U.jpg',
+                'https://images.unsplash.com/photo-1497215842964-222b430dc094?q=80&w=2400&auto=format&fit=crop',
+                'https://images.unsplash.com/photo-1502082553048-f009c37129b9?q=80&w=2400&auto=format&fit=crop'
+            ];
+
+            let currentIndex = 0;
+            let showingA = true;
+            const changeIntervalMs = 6000;
+
+            heroImages.forEach(function (src) {
+                const preloadImage = new Image();
+                preloadImage.src = src;
+            });
+
+            setInterval(function () {
+                const nextIndex = (currentIndex + 1) % heroImages.length;
+                const nextSrc = heroImages[nextIndex];
+                const nextImage = new Image();
+                nextImage.src = nextSrc;
+                nextImage.onload = function () {
+                    const visibleImage = showingA ? heroImageA : heroImageB;
+                    const hiddenImage = showingA ? heroImageB : heroImageA;
+
+                    hiddenImage.src = nextSrc;
+                    hiddenImage.classList.remove('opacity-0');
+                    hiddenImage.classList.add('opacity-100');
+                    visibleImage.classList.remove('opacity-100');
+                    visibleImage.classList.add('opacity-0');
+
+                    showingA = !showingA;
+                    currentIndex = nextIndex;
+                };
+            }, changeIntervalMs);
+        })();
+
     </script>
 </body>
 </html>
