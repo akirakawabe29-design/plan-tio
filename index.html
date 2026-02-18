@@ -30,7 +30,10 @@
         }
     </script>
     <style>
-        .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        .clip-diagonal { clip-path: none; }
+        @media (min-width: 768px) {
+            .clip-diagonal { clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+        }
         .hover-underline-animation {
             display: inline-block;
             position: relative;
