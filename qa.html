@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ja" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | 株式会社プランティオ</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&family=Noto+Sans+JP:wght@400;500;700&family=Outfit:wght@300;400;600&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            dark: '#111827', // Black/Navy
+                            gray: '#F3F4F6', // Light Gray
+                            gold: '#C5A059', // Accent
+                            warm: '#E67E22', // Product
+                            cool: '#2C7873', // Cycle Up
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Noto Sans JP"', 'sans-serif'],
+                        serif: ['"Noto Serif JP"', 'serif'],
+                        en: ['"Outfit"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* スクロールバー非表示 (SP用横スクロール) */
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+        
+        /* デフォルトの矢印を消す */
+        details > summary { list-style: none; }
+        details > summary::-webkit-details-marker { display: none; }
+        
+        /* 開閉アニメーションの補完 */
+        details[open] summary ~ * {
+            animation: slideDown 0.3s ease-in-out;
+        }
+        @keyframes slideDown {
+            0% { opacity: 0; transform: translateY(-10px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
+        #menu-button.is-open .menu-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        #menu-button.is-open .menu-line:nth-child(2) { opacity: 0; }
+        #menu-button.is-open .menu-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+    </style>
+</head>
+<body class="bg-white text-brand-dark antialiased">
+
+    <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
+        <div class="max-w-7xl mx-auto px-6 h-20 flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-gray-900">Plan-tio</a>
+            <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <a href="mission.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">MISSION</a>
+                <div class="relative group">
+                    <a href="service-list.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
+                        SERVICE
+                        <span class="text-[10px]">▾</span>
+                    </a>
+                    <div class="absolute left-0 top-full mt-3 w-64 rounded-xl border border-gray-100 bg-white shadow-lg p-3 invisible opacity-0 translate-y-1 group-hover:visible group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-200">
+                        <a href="originalbrand-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                        <a href="oem-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                        <a href="cycleup-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                        <a href="marketaccess-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                    </div>
+                </div>
+                <a href="news-list.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">NEWS</a>
+                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-xs font-bold tracking-widest text-gray-700 rounded-md hover:bg-gray-900 hover:text-white transition-colors">CONTACT</a>
+            </div>
+            <button
+                type="button"
+                id="menu-button"
+                aria-controls="mobile-menu"
+                aria-expanded="false"
+                aria-label="メニューを開く"
+                class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 text-gray-900"
+            >
+                <span class="menu-line block w-5 h-0.5 bg-current transition-all duration-300 ease-out origin-center"></span>
+                <span class="menu-line block w-5 h-0.5 bg-current transition-all duration-300 ease-out origin-center"></span>
+                <span class="menu-line block w-5 h-0.5 bg-current transition-all duration-300 ease-out origin-center"></span>
+            </button>
+        </div>
+
+        <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md overflow-hidden max-h-0 opacity-0 -translate-y-2 pointer-events-none transition-all duration-300 ease-out">
+            <div class="px-6 py-6 flex flex-col gap-5 text-sm font-bold tracking-widest text-gray-600">
+                <a href="about.html" class="hover:text-gray-900 transition-colors">ABOUT</a>
+                <a href="mission.html" class="hover:text-gray-900 transition-colors">MISSION</a>
+                <a href="service-list.html" class="hover:text-gray-900 transition-colors">SERVICE</a>
+                <a href="originalbrand-detail.html" class="pl-4 text-xs tracking-[0.22em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
+                <a href="oem-detail.html" class="pl-4 text-xs tracking-[0.22em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
+                <a href="cycleup-detail.html" class="pl-4 text-xs tracking-[0.22em] text-gray-500 hover:text-gray-900 transition-colors">CYCLE UP</a>
+                <a href="marketaccess-detail.html" class="pl-4 text-xs tracking-[0.22em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
+                <a href="news-list.html" class="hover:text-gray-900 transition-colors">NEWS</a>
+                <a href="company.html" class="hover:text-gray-900 transition-colors">COMPANY</a>
+                <a href="contact.html" class="inline-flex items-center justify-center mt-1 px-4 py-3 border border-gray-300 text-xs font-bold tracking-widest text-gray-700 rounded-md hover:bg-gray-900 hover:text-white transition-colors">CONTACT</a>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        (function () {
+            const menuButton = document.getElementById('menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (!menuButton || !mobileMenu) {
+                return;
+            }
+
+            const openClasses = ['max-h-[420px]', 'opacity-100', 'translate-y-0', 'pointer-events-auto'];
+            const closedClasses = ['max-h-0', 'opacity-0', '-translate-y-2', 'pointer-events-none'];
+            const menuLines = menuButton.querySelectorAll('.menu-line');
+
+            function openMenu() {
+                mobileMenu.classList.remove(...closedClasses);
+                mobileMenu.classList.add(...openClasses);
+                menuButton.setAttribute('aria-expanded', 'true');
+                menuButton.classList.add('is-open');
+                if (menuLines.length === 3) {
+                    menuLines[0].style.transform = 'translateY(8px) rotate(45deg)';
+                    menuLines[1].style.opacity = '0';
+                    menuLines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+                }
+            }
+
+            function closeMenu() {
+                mobileMenu.classList.remove(...openClasses);
+                mobileMenu.classList.add(...closedClasses);
+                menuButton.setAttribute('aria-expanded', 'false');
+                menuButton.classList.remove('is-open');
+                if (menuLines.length === 3) {
+                    menuLines[0].style.transform = '';
+                    menuLines[1].style.opacity = '';
+                    menuLines[2].style.transform = '';
+                }
+            }
+
+            menuButton.addEventListener('click', function () {
+                const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
+                if (isExpanded) {
+                    closeMenu();
+                } else {
+                    openMenu();
+                }
+            });
+
+            mobileMenu.querySelectorAll('a').forEach(function (link) {
+                link.addEventListener('click', function () {
+                    closeMenu();
+                });
+            });
+        })();
+    </script>
+
+    <header class="pt-32 pb-12 md:pt-40 md:pb-20 px-6 bg-brand-gray/30">
+        <div class="container mx-auto max-w-5xl text-center md:text-left">
+            <p class="text-brand-gold font-en tracking-[0.3em] text-xs font-bold mb-4 gs-fade">SUPPORT & FAQ</p>
+            <h1 class="text-4xl md:text-5xl font-serif font-medium mb-6 gs-fade delay-100">
+                よくあるご質問
+            </h1>
+            <p class="text-sm text-gray-500 max-w-xl gs-fade delay-200 mx-auto md:mx-0">
+                各事業サービスに関するご質問や、お取引に関する一般的な疑問にお答えします。
+                解決しない場合は、お気軽にお問い合わせください。
+            </p>
+        </div>
+    </header>
+
+    <div class="md:hidden sticky top-20 z-40 bg-white/95 backdrop-blur border-b border-gray-100 py-3">
+        <div class="px-6 flex gap-3 overflow-x-auto no-scrollbar whitespace-nowrap">
+            <a href="#cat-brand" class="px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-xs font-bold hover:bg-brand-dark hover:text-white transition-colors">自社ブランド</a>
+            <a href="#cat-oem" class="px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-xs font-bold hover:bg-brand-dark hover:text-white transition-colors">OEM/ODM開発</a>
+            <a href="#cat-cycle" class="px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-xs font-bold hover:bg-brand-dark hover:text-white transition-colors">サイクルアップ</a>
+            <a href="#cat-market" class="px-4 py-2 rounded-full bg-gray-100 text-gray-600 text-xs font-bold hover:bg-brand-dark hover:text-white transition-colors">輸入・EC支援</a>
+        </div>
+    </div>
+
+    <main class="py-12 md:py-24 px-6">
+        <div class="container mx-auto max-w-5xl flex flex-col md:flex-row gap-16">
+            
+            <aside class="hidden md:block w-1/4">
+                <div class="sticky top-32">
+                    <h3 class="font-en text-xs tracking-widest font-bold text-gray-400 mb-6">CATEGORIES</h3>
+                    <ul class="space-y-4 text-sm font-bold text-gray-600">
+                        <li><a href="#cat-brand" class="block hover:text-brand-warm transition-colors">Original Brand (自社ブランド)</a></li>
+                        <li><a href="#cat-oem" class="block hover:text-brand-dark transition-colors">OEM/ODM (受託開発)</a></li>
+                        <li><a href="#cat-cycle" class="block hover:text-brand-cool transition-colors">Cycle Up (輸出・リユース)</a></li>
+                        <li><a href="#cat-market" class="block hover:text-brand-gold transition-colors">Market Access (輸入・EC支援)</a></li>
+                    </ul>
+                </div>
+            </aside>
+
+            <div class="w-full md:w-3/4 space-y-20">
+
+                <section id="cat-brand" class="scroll-mt-32 gs-reveal">
+                    <h2 class="text-2xl font-serif mb-8 flex items-center gap-4">
+                        <span class="w-8 h-px bg-brand-warm"></span>
+                        Original Brand (自社ブランド)
+                    </h2>
+                    <div class="space-y-4">
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">塗料は子供が口に入れても安全ですか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-warm text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                はい、極めて安全です。当社の木製玩具に使用している塗料は、すべて食品衛生法に基づく検査をクリアした安全なものを使用しております。赤ちゃんが舐めたり噛んだりしても健康に害はありません。
+                            </div>
+                        </details>
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">小売店での取り扱いや、卸売（BtoB）は可能ですか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-warm text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                実店舗・オンラインストア問わず、卸売のお取引を歓迎しております。<a href="contact.html" class="text-brand-warm underline">お問い合わせフォーム</a>より「新規取引希望」の旨をご連絡いただければ、担当者より掛率やロットなどの条件面をご案内いたします。
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <section id="cat-oem" class="scroll-mt-32 gs-reveal">
+                    <h2 class="text-2xl font-serif mb-8 flex items-center gap-4">
+                        <span class="w-8 h-px bg-brand-dark"></span>
+                        OEM / ODM (受託開発)
+                    </h2>
+                    <div class="space-y-4">
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">最小ロット（MOQ）はどれくらいですか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-dark text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                製品の材質やサイズによって異なりますが、木製玩具の完全オリジナル製造の場合は500個〜1,000個程度から承ることが多いです。既製品へのロゴ印字などの軽微なカスタマイズであれば、より小ロットでの対応も可能な場合がございます。
+                            </div>
+                        </details>
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">デザインデータ（Illustrator等）が作れないのですが依頼可能ですか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-dark text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                はい、可能です（ODM対応）。手書きのスケッチや「こんなイメージ」といった参考写真をお持ちいただければ、弊社のデザイナー・企画チームが図面やパッケージデザインを起こしてご提案いたします。
+                            </div>
+                        </details>
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">ST基準（玩具安全基準）などの検査も代行してもらえますか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-dark text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                もちろんです。製品の設計段階からST基準をクリアできるようアドバイスし、第三者機関への検査提出からマーク取得まで、面倒な実務をすべて弊社で代行・サポートいたします。
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <section id="cat-cycle" class="scroll-mt-32 gs-reveal">
+                    <h2 class="text-2xl font-serif mb-8 flex items-center gap-4">
+                        <span class="w-8 h-px bg-brand-cool"></span>
+                        Cycle Up (輸出・リユース事業)
+                    </h2>
+                    <div class="space-y-4">
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">どのような品物が輸出の買取対象になりますか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-cool text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                主なおもちゃやベビー用品はもちろん、食器、バッグ、靴、家具、自転車、楽器など幅広い日用品が対象です。ただし、ひどい汚れや破損があるもの、法律で輸出が禁止されているものは対象外となります。詳細な品目リストはお問い合わせください。
+                            </div>
+                        </details>
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">法人ではなく、個人の不用品も回収・買取していますか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-cool text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                現在、個人のお客様からの直接の少量買取・回収は行っておりません。不用品回収業者様、遺品整理業者様、または在庫処分をご検討の法人様（コンテナ単位やトラック単位）向けのBtoBサービスとなっております。
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+                <section id="cat-market" class="scroll-mt-32 gs-reveal">
+                    <h2 class="text-2xl font-serif mb-8 flex items-center gap-4">
+                        <span class="w-8 h-px bg-brand-gold"></span>
+                        Market Access (輸入・EC支援)
+                    </h2>
+                    <div class="space-y-4">
+                        <details class="group bg-white border border-gray-200 rounded-lg shadow-sm">
+                            <summary class="flex justify-between items-center font-bold cursor-pointer list-none p-5 md:p-6 hover:bg-gray-50 transition-colors">
+                                <span class="pr-6 text-sm md:text-base text-gray-800">海外ブランドの日本における「総代理店」になってもらうことは可能ですか？</span>
+                                <span class="transition-transform duration-300 group-open:rotate-45 text-brand-gold text-2xl font-light">+</span>
+                            </summary>
+                            <div class="p-5 md:p-6 pt-0 text-sm text-gray-600 leading-relaxed border-t border-gray-100 mt-2">
+                                はい、条件やブランドの親和性に応じて総代理店契約（Exclusive Distributor）を結び、日本国内でのブランディング、輸入通関、EC構築、カスタマーサポートまでを一任いただくパートナーシップも積極的に行っております。
+                            </div>
+                        </details>
+                    </div>
+                </section>
+
+            </div>
+        </div>
+    </main>
+
+    <section class="py-20 bg-brand-gray text-center">
+        <div class="container mx-auto px-6 max-w-2xl">
+            <h2 class="text-2xl font-serif mb-4">お探しの回答は見つかりましたか？</h2>
+            <p class="text-sm text-gray-500 mb-8 leading-relaxed">
+                ご不明な点がございましたら、専門スタッフが丁寧にお答えいたします。<br>お見積りやご相談もお気軽にご連絡ください。
+            </p>
+            <a href="contact.html" class="inline-flex items-center justify-center px-10 py-4 bg-brand-dark text-white rounded-full font-bold tracking-widest hover:bg-brand-gold hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                お問い合わせフォーム
+            </a>
+        </div>
+    </section>
+
+    <footer class="bg-gray-900 text-gray-300 border-t border-gray-800">
+        <div class="max-w-7xl mx-auto px-6 py-12 flex flex-col md:flex-row md:items-start md:justify-between gap-8">
+            <a href="index.html" class="text-2xl font-en font-bold tracking-tighter text-white">Plan-tio</a>
+
+            <div class="w-full md:w-auto flex flex-col items-start md:items-end gap-6 text-xs font-bold tracking-widest">
+                <div class="flex flex-col md:flex-row md:items-start md:justify-end gap-8 md:gap-12 text-left md:text-right">
+                    <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+                    <a href="mission.html" class="hover:text-white transition-colors">MISSION</a>
+
+                    <div class="flex flex-col gap-3">
+                        <a href="service-list.html" class="hover:text-white transition-colors">SERVICE</a>
+                        <div class="flex flex-col gap-2 text-[11px] tracking-[0.2em] text-gray-400 md:items-end">
+                            <a href="originalbrand-detail.html" class="hover:text-white transition-colors">ORIGINAL BRAND</a>
+                            <a href="oem-detail.html" class="hover:text-white transition-colors">OEM / ODM</a>
+                            <a href="cycleup-detail.html" class="hover:text-white transition-colors">CYCLE UP</a>
+                            <a href="marketaccess-detail.html" class="hover:text-white transition-colors">MARKET ACCESS</a>
+                        </div>
+                    </div>
+
+                    <a href="news-list.html" class="hover:text-white transition-colors">NEWS</a>
+                    <a href="company.html" class="hover:text-white transition-colors">COMPANY</a>
+                </div>
+
+                <a href="contact.html" class="inline-flex items-center justify-center px-6 py-3 border border-white text-xs font-bold tracking-widest hover:bg-white hover:text-gray-900 transition-colors">CONTACT</a>
+            </div>
+        </div>
+
+        <div class="px-6 pb-8 text-center text-[11px] text-gray-500">
+            <p>&copy; 2026 Plan-tio Co.,Ltd. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Header Fade
+        gsap.from(".gs-fade", {
+            y: 30, opacity: 0, duration: 1, stagger: 0.2, ease: "power2.out"
+        });
+
+        // Content Reveal
+        const sections = document.querySelectorAll(".gs-reveal");
+        sections.forEach(sec => {
+            gsap.fromTo(sec, 
+                { opacity: 0, y: 40 },
+                {
+                    opacity: 1, y: 0, duration: 0.8, ease: "power2.out",
+                    scrollTrigger: { trigger: sec, start: "top 85%" }
+                }
+            );
+        });
+
+        // (Optional) Close other details when one opens to keep UI clean
+        const details = document.querySelectorAll("details");
+        details.forEach((targetDetail) => {
+            targetDetail.addEventListener("click", () => {
+                details.forEach((detail) => {
+                    if (detail !== targetDetail) {
+                        detail.removeAttribute("open");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
