@@ -40,6 +40,9 @@
             radial-gradient(at 80% 0%, hsla(189,100%,56%,0.1) 0px, transparent 50%),
             radial-gradient(at 0% 50%, hsla(340,100%,76%,0.1) 0px, transparent 50%);
         }
+            #menu-button.is-open .menu-line:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+        #menu-button.is-open .menu-line:nth-child(2) { opacity: 0; }
+        #menu-button.is-open .menu-line:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
     </style>
 </head>
 <body class="bg-brand-silver text-brand-text antialiased">
@@ -50,6 +53,7 @@
 
             <div class="hidden md:flex items-center gap-8 text-xs font-bold tracking-widest text-gray-600">
                 <a href="about.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">ABOUT</a>
+                <a href="mission.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">MISSION</a>
                 <div class="relative group">
                     <a href="service-list.html" class="relative inline-flex items-center gap-2 hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">
                         SERVICE
@@ -61,10 +65,10 @@
                         <a href="cycleup-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">CYCLE UP</a>
                         <a href="marketaccess-detail.html" class="block px-3 py-2 rounded-lg text-[11px] text-gray-600 hover:bg-gray-50 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
                     </div>
-                <a href="news-list.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">NEWS</a>
                 </div>
-                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
-                <a href="contact.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">CONTACT</a>
+                <a href="news-list.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">NEWS</a>
+                                <a href="company.html" class="relative hover:text-gray-900 transition-colors after:content-[''] after:absolute after:left-0 after:-bottom-1 after:h-px after:w-0 after:bg-current after:transition-all after:duration-200 hover:after:w-full">COMPANY</a>
+                <a href="contact.html" class="inline-flex items-center justify-center px-4 py-2 border border-gray-300 text-xs font-bold tracking-widest text-gray-700 rounded-md hover:bg-gray-900 hover:text-white transition-colors">CONTACT</a>
             </div>
 
             <button
@@ -75,15 +79,16 @@
                 aria-label="メニューを開く"
                 class="md:hidden inline-flex flex-col justify-center items-center gap-1.5 w-10 h-10 text-gray-900"
             >
-                <span class="block w-5 h-0.5 bg-current"></span>
-                <span class="block w-5 h-0.5 bg-current"></span>
-                <span class="block w-5 h-0.5 bg-current"></span>
+                <span class="menu-line block w-5 h-0.5 bg-current transition-all duration-300 ease-out origin-center"></span>
+                <span class="menu-line block w-5 h-0.5 bg-current transition-all duration-300 ease-out origin-center"></span>
+                <span class="menu-line block w-5 h-0.5 bg-current transition-all duration-300 ease-out origin-center"></span>
             </button>
         </div>
 
         <div id="mobile-menu" class="md:hidden border-t border-gray-100 bg-white/95 backdrop-blur-md overflow-hidden max-h-0 opacity-0 -translate-y-2 pointer-events-none transition-all duration-300 ease-out">
             <div class="px-6 py-6 flex flex-col gap-5 text-sm font-bold tracking-widest text-gray-600">
                 <a href="about.html" class="hover:text-gray-900 transition-colors">ABOUT</a>
+                <a href="mission.html" class="hover:text-gray-900 transition-colors">MISSION</a>
                 <a href="service-list.html" class="hover:text-gray-900 transition-colors">SERVICE</a>
                 <a href="originalbrand-detail.html" class="pl-4 text-xs tracking-[0.22em] text-gray-500 hover:text-gray-900 transition-colors">ORIGINAL BRAND</a>
                 <a href="oem-detail.html" class="pl-4 text-xs tracking-[0.22em] text-gray-500 hover:text-gray-900 transition-colors">OEM / ODM</a>
@@ -91,7 +96,7 @@
                 <a href="marketaccess-detail.html" class="pl-4 text-xs tracking-[0.22em] text-gray-500 hover:text-gray-900 transition-colors">MARKET ACCESS</a>
                 <a href="news-list.html" class="hover:text-gray-900 transition-colors">NEWS</a>
                 <a href="company.html" class="hover:text-gray-900 transition-colors">COMPANY</a>
-                <a href="contact.html" class="hover:text-gray-900 transition-colors">CONTACT</a>
+                <a href="contact.html" class="inline-flex items-center justify-center mt-1 px-4 py-3 border border-gray-300 text-xs font-bold tracking-widest text-gray-700 rounded-md hover:bg-gray-900 hover:text-white transition-colors">CONTACT</a>
             </div>
         </div>
     </nav>
@@ -107,18 +112,31 @@
 
             const openClasses = ['max-h-[420px]', 'opacity-100', 'translate-y-0', 'pointer-events-auto'];
             const closedClasses = ['max-h-0', 'opacity-0', '-translate-y-2', 'pointer-events-none'];
+            const menuLines = menuButton.querySelectorAll('.menu-line');
 
             function openMenu() {
                 mobileMenu.classList.remove(...closedClasses);
                 mobileMenu.classList.add(...openClasses);
                 menuButton.setAttribute('aria-expanded', 'true');
-            }
+                menuButton.classList.add('is-open');
+                if (menuLines.length === 3) {
+                    menuLines[0].style.transform = 'translateY(8px) rotate(45deg)';
+                    menuLines[1].style.opacity = '0';
+                    menuLines[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+                }
+                }
 
             function closeMenu() {
                 mobileMenu.classList.remove(...openClasses);
                 mobileMenu.classList.add(...closedClasses);
                 menuButton.setAttribute('aria-expanded', 'false');
-            }
+                menuButton.classList.remove('is-open');
+                if (menuLines.length === 3) {
+                    menuLines[0].style.transform = '';
+                    menuLines[1].style.opacity = '';
+                    menuLines[2].style.transform = '';
+                }
+                }
 
             menuButton.addEventListener('click', function () {
                 const isExpanded = menuButton.getAttribute('aria-expanded') === 'true';
@@ -284,6 +302,7 @@
             <div class="w-full md:w-auto flex flex-col items-start md:items-end gap-6 text-xs font-bold tracking-widest">
                 <div class="flex flex-col md:flex-row md:items-start md:justify-end gap-8 md:gap-12 text-left md:text-right">
                     <a href="about.html" class="hover:text-white transition-colors">ABOUT</a>
+                    <a href="mission.html" class="hover:text-white transition-colors">MISSION</a>
 
                     <div class="flex flex-col gap-3">
                         <a href="service-list.html" class="hover:text-white transition-colors">SERVICE</a>
